@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import views.Icon;
 import views.ViewNavigator;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Logger;
 
@@ -15,8 +16,8 @@ public class Launcher extends Application {
 
     private static final Logger LOGGER = Logger.getLogger("Launcher");
 
-    public static void initialize() {
-        Launcher.launch();
+    public static void initialize(String[] args) {
+        Launcher.launch(args);
     }
 
     @Override
@@ -38,6 +39,13 @@ public class Launcher extends Application {
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream(Icon.APPICON.getPath()))));
 
         ViewNavigator.setStage(primaryStage);
+
+        if (getParameters().getRaw().isEmpty()) {
+            ViewNavigator.displayAccessView();
+        } else {
+            ViewNavigator.displayStartupErrorView(getParameters().getRaw().getFirst(), getParameters().getRaw().getLast());
+        }
+
         primaryStage.show();
     }
 }

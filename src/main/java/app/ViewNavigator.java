@@ -25,6 +25,10 @@ public class ViewNavigator {
         scene.setRoot(activeView.getRoot());
     }
 
+    public static void displayStartupErrorView(String title, String description) {
+        activeView = ViewFactory.createStartupErrorView(title, description);
+        scene.setRoot(activeView.getRoot());
+    }
 
     public static Stage getStage() {
         return stage;

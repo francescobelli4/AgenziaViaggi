@@ -1,9 +1,10 @@
 package views;
 
 public enum Page {
+    STARTUP_ERROR("/pages/StartupErrorPage.fxml"),
     LOGIN("/pages/LoginPage.fxml");
 
-    private String path;
+    private final String path;
 
     Page(String path) {
         this.path = path;

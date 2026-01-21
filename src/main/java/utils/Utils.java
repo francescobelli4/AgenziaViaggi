@@ -1,6 +1,11 @@
 package utils;
 
 import app.AppContext;
+import javafx.scene.Parent;
+import javafx.scene.control.Labeled;
+import javafx.scene.control.TextInputControl;
+import javafx.scene.text.Font;
+import views.ViewNavigator;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,12 +13,21 @@ import java.util.Properties;
 
 public class Utils {
 
+    private static boolean propsLoaded = false;
     private static final Properties props = new Properties();
 
     private Utils() {}
 
-    static {
+    private static void loadProps() throws IllegalStateException {
+        if (propsLoaded) return;
+
+        propsLoaded = true;
+
         InputStream input = AppContext.class.getResourceAsStream("/dbcred.properties");
+        if (input == null) {
+            throw new IllegalStateException("File properties non trovato.");
+        }
+
         try {
             props.load(input);
         } catch (IOException e) {
@@ -21,7 +35,26 @@ public class Utils {
         }
     }
 
-    public static String getProperty(String prop) {
+    public static String getProperty(String prop) throws IllegalStateException {
+        loadProps();
         return props.getProperty(prop);
     }
+
+    public static void scaleFonts(Parent parent) {
+        for (var node : parent.getChildrenUnmodifiable()) {
+
+            if (node instanceof Parent p) {
+                scaleFonts(p);
+            }
+
+            if (node instanceof Labeled l) {
+                Font oldFont = l.getFont();
+                l.setFont(Font.font(oldFont.getFamily(), ViewNavigator.scaleValue(oldFont.getSize())));
+            } else if (node instanceof TextInputControl tic) {
+                Font oldFont = tic.getFont();
+                tic.setFont(Font.font(oldFont.getFamily(), ViewNavigator.scaleValue(oldFont.getSize())));
+            }
+        }
+    }
+
 }
