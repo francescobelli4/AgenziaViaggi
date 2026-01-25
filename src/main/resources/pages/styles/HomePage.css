@@ -1,0 +1,94 @@
+/* --- Impostazioni Generali --- */
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica", sans-serif;
+    -fx-font-size: 14px;
+    /* Un grigio molto chiaro per lo sfondo generale */
+    -fx-background-color: #f4f6f8;
+}
+
+/* --- Top Bar (Barra Superiore) --- */
+/* Aggiungeremo la classe 'top-bar' nel FXML */
+.top-bar {
+    -fx-background-color: #18454a;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);
+}
+
+/* --- Accordion (Il contenitore dei menu) --- */
+.accordion {
+    -fx-background-color: transparent;
+}
+
+/* --- TitledPane (I "titoli" del menu a tendina) --- */
+.titled-pane {
+    -fx-text-fill: #18454a; /* Testo color petrolio */
+}
+
+/* Lo stato "chiuso" o "aperto" della barra del titolo */
+.titled-pane > .title {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0; /* Solo bordo inferiore */
+    -fx-padding: 12 15 12 15;
+    -fx-font-weight: bold;
+}
+
+/* Quando passi il mouse sopra il titolo */
+.titled-pane > .title:hover {
+    -fx-background-color: #f0f4f5;
+    -fx-cursor: hand;
+}
+
+/* Quando il menu è aperto */
+.titled-pane:expanded > .title {
+    -fx-background-color: #eef2f3;
+    -fx-border-color: #18454a;
+    -fx-border-width: 0 0 0 4; /* Bordo colorato a sinistra per evidenziare */
+}
+
+/* L'area del contenuto (dove ci sono i bottoni) */
+.titled-pane > .content {
+    -fx-background-color: #fafafa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 1 1;
+}
+
+/* --- Bottoni del Menu --- */
+.button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #555555;
+    -fx-alignment: CENTER-LEFT; /* Testo allineato a sinistra */
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-background-radius: 4;
+}
+
+/* Effetto Hover sui bottoni (quando ci passi sopra) */
+.button:hover {
+    -fx-background-color: #18454a; /* Diventa color petrolio */
+    -fx-text-fill: white;           /* Testo diventa bianco */
+}
+
+/* Effetto Click sui bottoni */
+.button:pressed {
+    -fx-background-color: #103034; /* Petrolio più scuro */
+}
+
+/* --- Stile speciale per il bottone "Pericolo" (es. Disdici) --- */
+.button-danger {
+    -fx-text-fill: #d32f2f; /* Rosso */
+}
+
+.button-danger:hover {
+    -fx-background-color: #d32f2f;
+    -fx-text-fill: white;
+}
+
+/* --- Etichette (Labels) dentro i menu --- */
+.sidebar-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #2980b9;
+    -fx-padding: 5 0 0 5;
+    -fx-font-size: 11px;
+    -fx-effect: null; /* Rimuove eventuali ombre */
+}

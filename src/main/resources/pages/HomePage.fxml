@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <GridPane StackPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #18454a;" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <children>
+                        <ImageView fitHeight="76.0" fitWidth="241.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+                            <image>
+                                <Image url="@../icons/AppNameBG.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </ImageView>
+
+                        <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+
+                        <Label fx:id="welcomeLabel" text="Benvenuto, KING." textFill="#e7e7e7" HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font size="23.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <GridPane GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+
+                        <Accordion>
+                            <panes>
+
+                                <TitledPane text="Viaggi &amp; Itinerari">
+                                    <content>
+                                        <VBox spacing="10.0">
+                                            <children>
+                                                <Button fx:id="listaViaggiButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Lista Viaggi">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button fx:id="listaItinerariButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Lista Itinerari">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button fx:id="listaTappeButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Lista Tappe">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </TitledPane>
+
+                                <TitledPane text="Logistica &amp; Risorse">
+                                    <content>
+                                        <VBox spacing="10.0">
+                                            <children>
+                                                <Button fx:id="listaAlberghiButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Lista Alberghi">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                                <Button fx:id="listaAutobusButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Lista Autobus">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </TitledPane>
+
+                                <TitledPane text="Gestione Clienti">
+                                    <content>
+                                        <VBox spacing="10.0">
+                                            <children>
+                                                <Button fx:id="listaClientiButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Lista Clienti">
+                                                    <font>
+                                                        <Font size="14.0" />
+                                                    </font>
+                                                </Button>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </TitledPane>
+
+                            </panes>
+                        </Accordion>
+
+                    </children>
+                </GridPane>
+            </children>
+        </GridPane>
+    </children>
+</StackPane>

@@ -20,13 +20,22 @@ public class ViewNavigator {
         stage.setScene(scene);
     }
 
-    public static void displayAccessView() {
+    public static void displayLoginView() {
         activeView = ViewFactory.createLoginView();
         scene.setRoot(activeView.getRoot());
     }
 
     public static void displayStartupErrorView(String title, String description) {
         activeView = ViewFactory.createStartupErrorView(title, description);
+        scene.setRoot(activeView.getRoot());
+    }
+
+    public static void displayNotification(String title, String description, Icon icon) {
+        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createNotificationView(title, description, icon).getRoot());
+    }
+
+    public static void displayHomeView() {
+        activeView = ViewFactory.createHomeView();
         scene.setRoot(activeView.getRoot());
     }
 

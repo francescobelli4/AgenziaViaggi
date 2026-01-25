@@ -2,7 +2,9 @@ package views;
 
 public enum Page {
     STARTUP_ERROR("/pages/StartupErrorPage.fxml"),
-    LOGIN("/pages/LoginPage.fxml");
+    NOTIFICATION("/pages/Notification.fxml"),
+    LOGIN("/pages/LoginPage.fxml"),
+    HOME("/pages/HomePage.fxml");
 
     private final String path;
 

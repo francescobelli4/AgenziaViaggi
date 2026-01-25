@@ -3,6 +3,7 @@ package utils;
 import app.AppContext;
 import javafx.scene.Parent;
 import javafx.scene.control.Labeled;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.text.Font;
 import views.ViewNavigator;
@@ -57,4 +58,20 @@ public class Utils {
         }
     }
 
+    //To be fast... https://stackoverflow.com/questions/8248277/how-to-determine-if-a-string-has-non-alphanumeric-characters
+    private static boolean isAlphanumeric(String str) {
+        return str.matches("[a-zA-Z0-9]+") || str.isEmpty();
+    }
+
+    public static TextFormatter<?> getTextFormatter(int maxLength, boolean onlyAlphanumeric) {
+        return new TextFormatter<>(change -> {
+            int len = change.getControlNewText().length();
+
+            if (onlyAlphanumeric) {
+                return len < maxLength && Utils.isAlphanumeric(change.getText()) ? change : null;
+            } else {
+                return len < maxLength ? change : null;
+            }
+        });
+    }
 }

@@ -41,7 +41,7 @@ public class Launcher extends Application {
         ViewNavigator.setStage(primaryStage);
 
         if (getParameters().getRaw().isEmpty()) {
-            ViewNavigator.displayAccessView();
+            ViewNavigator.displayLoginView();
         } else {
             ViewNavigator.displayStartupErrorView(getParameters().getRaw().getFirst(), getParameters().getRaw().getLast());
         }
