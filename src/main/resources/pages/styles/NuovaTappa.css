@@ -1,0 +1,58 @@
+.root {
+    -fx-background-color: rgba(0,0,0,0.5);
+}
+
+.container {
+    -fx-background-color: white;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);
+}
+
+.textfield {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+}
+
+.toggle {
+    -fx-background-color: white;
+    -fx-text-fill: #18454a;
+    -fx-border-color: #18454a;
+}
+
+.toggle-left {
+    -fx-background-radius: 20px 0 0 20px;
+    -fx-border-radius: 20px 0 0 20px;
+    -fx-border-width: 1px 0 1px 1px;
+}
+
+.toggle-right {
+    -fx-background-radius: 0 20px 20px 0;
+    -fx-border-radius: 0 20px 20px 0;
+    -fx-border-width: 1px 1px 1px 1px;
+}
+
+.toggle:selected {
+    -fx-background-color: #18454a;
+    -fx-text-fill: white;
+}
+
+.toggle:hover:!selected{
+    -fx-background-color: #eef5f6;
+}
+
+.button {
+    -fx-background-color: #18454a;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px 20px;
+}
+
+.button-primary:hover {
+    -fx-background-color: #123438;
+}
+
+.button-primary:pressed {
+    -fx-background-color: #0e282b;
+}
