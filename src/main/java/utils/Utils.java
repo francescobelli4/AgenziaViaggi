@@ -6,6 +6,8 @@ import javafx.scene.control.Labeled;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import views.ViewNavigator;
 
 import java.io.IOException;
@@ -49,13 +51,28 @@ public class Utils {
             }
 
             if (node instanceof Labeled l) {
-                Font oldFont = l.getFont();
-                l.setFont(Font.font(oldFont.getFamily(), ViewNavigator.scaleValue(oldFont.getSize())));
+                l.setFont(getScaledFont(l.getFont()));
             } else if (node instanceof TextInputControl tic) {
-                Font oldFont = tic.getFont();
-                tic.setFont(Font.font(oldFont.getFamily(), ViewNavigator.scaleValue(oldFont.getSize())));
+                tic.setFont(getScaledFont(tic.getFont()));
             }
         }
+    }
+
+    private static Font getScaledFont(Font oldFont) {
+        double newSize = ViewNavigator.scaleValue(oldFont.getSize());
+
+        String style = oldFont.getStyle().toLowerCase();
+
+        FontWeight weight = FontWeight.NORMAL;
+        if (style.contains("bold")) {
+            weight = FontWeight.BOLD;
+        } else if (style.contains("black") || style.contains("heavy")) {
+            weight = FontWeight.BLACK;
+        } else if (style.contains("light")) {
+            weight = FontWeight.LIGHT;
+        }
+
+        return Font.font(oldFont.getFamily(), weight, FontPosture.REGULAR, newSize);
     }
 
     //To be fast... https://stackoverflow.com/questions/8248277/how-to-determine-if-a-string-has-non-alphanumeric-characters

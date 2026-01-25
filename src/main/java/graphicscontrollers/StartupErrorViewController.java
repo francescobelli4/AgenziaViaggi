@@ -7,6 +7,7 @@ public class StartupErrorViewController extends GraphicsController<StartupErrorV
 
     public StartupErrorViewController(StartupErrorView view) {
         super(view);
+        loaded();
     }
 
     @Override

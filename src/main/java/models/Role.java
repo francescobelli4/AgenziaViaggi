@@ -12,6 +12,10 @@ public enum Role {
         this.role = role;
     }
 
+    public String getPrivilege() {
+        return this.getRole().toUpperCase();
+    }
+
     public String getRole() {
         return role;
     }

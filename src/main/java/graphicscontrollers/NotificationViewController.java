@@ -6,6 +6,7 @@ public class NotificationViewController extends GraphicsController<NotificationV
 
     public NotificationViewController(NotificationView view) {
         super(view);
+        loaded();
     }
 
     @Override

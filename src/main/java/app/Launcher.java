@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import views.Icon;
 import views.ViewNavigator;
 
-import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Logger;
 

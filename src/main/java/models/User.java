@@ -1,5 +1,9 @@
 package models;
 
+import app.AppContext;
+import utils.Utils;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,8 +47,9 @@ public class User {
         this.role = role;
     }
 
-    public void setLoggedIn() {
+    public void setLoggedIn() throws SQLException {
         this.loggedIn = true;
+        AppContext.performConnection(Utils.getProperty(getRole().getPrivilege()+"_USER"), Utils.getProperty(getRole().getPrivilege()+"_PASS"));
 
         for (LoginListener l : loginListeners)
             l.onLoggedIn();

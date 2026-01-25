@@ -39,6 +39,10 @@ public class ViewNavigator {
         scene.setRoot(activeView.getRoot());
     }
 
+    public static void displayAggiungiTappaView() {
+        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiTappaView().getRoot());
+    }
+
     public static Stage getStage() {
         return stage;
     }

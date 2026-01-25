@@ -1,5 +1,7 @@
 package views;
 
+import models.Tappa;
+
 public class ViewFactory {
 
     private ViewFactory () {}
@@ -18,5 +20,17 @@ public class ViewFactory {
 
     public static HomeView createHomeView() {
         return new HomeView();
+    }
+
+    public static ListaTappeView createListaTappeView() {
+        return new ListaTappeView();
+    }
+
+    public static ListaTappeElementView createListaTappeElementView(Tappa tappa) {
+        return new ListaTappeElementView(tappa);
+    }
+
+    public static AggiungiTappaView createAggiungiTappaView() {
+        return new AggiungiTappaView();
     }
 }

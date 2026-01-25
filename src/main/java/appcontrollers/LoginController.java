@@ -22,7 +22,6 @@ public class LoginController {
 
         try {
             Role userRole = new LoginProcedureDAO().execute(loginRequest);
-            System.out.println("ROLE: " + userRole);
 
             if (userRole != null) {
                 User.getInstance().setUsername(username);

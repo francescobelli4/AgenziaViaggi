@@ -15,10 +15,7 @@ public abstract class GraphicsController<V extends View> {
 
     protected GraphicsController(V view) {
         this.view = view;
-
         loadFXML(view.getPage());
-
-        loaded();
     }
 
     private void loadFXML(Page page) {

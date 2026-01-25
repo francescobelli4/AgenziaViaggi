@@ -1,21 +1,24 @@
 package graphicscontrollers;
 
-import appcontrollers.LoginController;
-import exception.DAOException;
-import exception.InvalidCredentialsException;
 import views.HomeView;
-import views.Icon;
-import views.LoginView;
-import views.ViewNavigator;
+import views.ListaTappeView;
+import views.ViewFactory;
 
 public class HomeViewController extends GraphicsController<HomeView> {
 
     public HomeViewController(HomeView view) {
         super(view);
+        loaded();
     }
 
     @Override
     public void loaded() {
+        getView().getListaTappeButton().setOnMouseClicked(_ -> listaTappeButtonClicked());
+    }
 
+    private void listaTappeButtonClicked() {
+        ListaTappeView listaTappe = ViewFactory.createListaTappeView();
+        getView().setActiveView(listaTappe);
+        getView().appendMainElement(listaTappe.getRoot());
     }
 }

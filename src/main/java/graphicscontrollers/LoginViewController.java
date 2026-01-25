@@ -11,6 +11,7 @@ public class LoginViewController extends GraphicsController<LoginView> {
 
     public LoginViewController(LoginView view) {
         super(view);
+        loaded();
     }
 
     @Override
