@@ -7,7 +7,10 @@ public enum Page {
     HOME("/pages/HomePage.fxml"),
     LISTA_TAPPE("/pages/listatappe/ListaTappe.fxml"),
     LISTA_TAPPE_ELEMENT("/pages/listatappe/ListaTappeElement.fxml"),
-    AGGIUNGI_TAPPA("/pages/listatappe/AggiungiTappa.fxml");
+    AGGIUNGI_TAPPA("/pages/listatappe/AggiungiTappa.fxml"),
+    LISTA_ITINERARI("/pages/listaitinerari/ListaItinerari.fxml"),
+    LISTA_ITINERARI_ELEMENT("/pages/listaitinerari/ListaItinerariElement.fxml"),
+    AGGIUNGI_ITINERARIO("/pages/listaitinerari/AggiungiItinerario.fxml");
 
     private final String path;
 

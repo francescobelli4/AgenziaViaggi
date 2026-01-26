@@ -1,9 +1,12 @@
 package models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Objects;
 
 public class Tappa {
 
+    @SerializedName("nome")
     private final String nome;
     private final Tipo tipo;
 

@@ -1,0 +1,12 @@
+.button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8px;
+}
+
+.button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.hbox:hover  {
+    -fx-background-color: #f0f0f0;
+}

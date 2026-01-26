@@ -1,0 +1,50 @@
+package appcontrollers;
+
+import com.google.gson.Gson;
+import daos.*;
+import dtos.ItinerarioDTO;
+import exception.DAOException;
+import exception.InvalidItineraryNameException;
+import models.Itinerario;
+import models.Tappa;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public class ItinerariesController {
+
+    public static List<Itinerario> getItinerari() throws DAOException {
+
+        List<Itinerario> itineraries;
+
+        try {
+            itineraries = new ListaItinerariProcedureDAO().execute(null);
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+
+        return itineraries;
+    }
+
+    public static void aggiungiItinerario(String nome, int costo, List<Tappa> tappe) throws DAOException, InvalidItineraryNameException {
+
+        if (nome.isBlank()) {
+            throw new InvalidItineraryNameException();
+        }
+
+        try {
+            new AggiungiItinerarioProcedureDAO().execute(new ItinerarioDTO(nome, costo, new Gson().toJson(tappe)));
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static void eliminaItinerario(Itinerario itinerario) throws DAOException {
+
+        try {
+            new EliminaItinerarioProcedureDAO().execute(itinerario.getNome());
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+}

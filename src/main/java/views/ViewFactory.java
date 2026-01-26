@@ -1,5 +1,6 @@
 package views;
 
+import models.Itinerario;
 import models.Tappa;
 
 public class ViewFactory {
@@ -33,4 +34,16 @@ public class ViewFactory {
     public static AggiungiTappaView createAggiungiTappaView() {
         return new AggiungiTappaView();
     }
+
+    public static ListaItinerariView createListaItinerariView() {
+        return new ListaItinerariView();
+    }
+
+    public static ListaItinerariElementView createListaItinerariElementView(Itinerario itinerario) {
+        return new ListaItinerariElementView(itinerario);
+    }
+
+    //public static AggiungiTappaView createAggiungiTappaView() {
+    //    return new AggiungiTappaView();
+    //}
 }

@@ -33,6 +33,13 @@
             <artifactId>mariadb-java-client</artifactId>
             <version>3.5.7</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.13.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

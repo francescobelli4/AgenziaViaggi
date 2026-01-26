@@ -28,12 +28,7 @@ public class ListaTappeViewController extends GraphicsController<ListaTappeView>
         getView().getAddCittaButton().setOnMouseClicked(_ -> addTappaButtonClicked());
         getView().getAddTappaButton().setOnMouseClicked(_ -> addTappaButtonClicked());
 
-        try {
-            tappe = StopsController.getTappe();
-            updateLists();
-        } catch (DAOException e) {
-            ViewNavigator.displayNotification("Error", e.getMessage(), Icon.APPICON);
-        }
+        updateLists();
     }
 
     private void addTappaButtonClicked() {
