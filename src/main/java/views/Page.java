@@ -17,7 +17,12 @@ public enum Page {
     LISTA_ALBERGHI("/pages/listaalberghi/ListaAlberghi.fxml"),
     LISTA_ALBERGHI_ELEMENT("/pages/listaalberghi/ListaAlberghiElement.fxml"),
     ALBERGO_INFO("/pages/listaalberghi/AlbergoInfo.fxml"),
-    AGGIUNGI_ALBERGO("/pages/listaalberghi/AggiungiAlbergo.fxml");
+    AGGIUNGI_ALBERGO("/pages/listaalberghi/AggiungiAlbergo.fxml"),
+    LISTA_AUTOBUS("/pages/listaautobus/ListaAutobus.fxml"),
+    LISTA_AUTOBUS_ELEMENT("/pages/listaautobus/ListaAutobusElement.fxml"),
+    AGGIUNGI_AUTOBUS("/pages/listaautobus/AggiungiAutobus.fxml"),
+    LISTA_CLIENTI("/pages/listaclienti/ListaClienti.fxml"),
+    LISTA_CLIENTI_ELEMENT("/pages/listaclienti/ListaClientiElement.fxml");
 
     private final String path;
 

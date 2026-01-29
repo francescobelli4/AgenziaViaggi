@@ -14,6 +14,8 @@ public class HomeViewController extends GraphicsController<HomeView> {
         getView().getListaTappeButton().setOnMouseClicked(_ -> listaTappeButtonClicked());
         getView().getListaItinerariButton().setOnMouseClicked(_ -> listaItinerariButtonClicked());
         getView().getListaAlberghiButton().setOnMouseClicked(_ -> listaAlberghiButtonClicked());
+        getView().getListaAutobusButton().setOnMouseClicked(_ -> listaAutobusButtonClicked());
+        getView().getListaClientiButton().setOnMouseClicked(_ -> listaClientiButtonClicked());
     }
 
     private void listaTappeButtonClicked() {
@@ -32,5 +34,17 @@ public class HomeViewController extends GraphicsController<HomeView> {
         ListaAlberghiView listaAlberghi = ViewFactory.createListaAlberghiView();
         getView().setActiveView(listaAlberghi);
         getView().appendMainElement(listaAlberghi.getRoot());
+    }
+
+    private void listaAutobusButtonClicked() {
+        ListaAutobusView listaAutobus = ViewFactory.createListaAutobusView();
+        getView().setActiveView(listaAutobus);
+        getView().appendMainElement(listaAutobus.getRoot());
+    }
+
+    private void listaClientiButtonClicked() {
+        ListaClientiView listaClienti = ViewFactory.createListaClientiView();
+        getView().setActiveView(listaClienti);
+        getView().appendMainElement(listaClienti.getRoot());
     }
 }

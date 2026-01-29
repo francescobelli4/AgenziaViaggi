@@ -61,6 +61,10 @@ public class ViewNavigator {
         ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiAlbergoView().getRoot());
     }
 
+    public static void displayAggiungiAutobusView() {
+        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiAutobusView().getRoot());
+    }
+
     public static Stage getStage() {
         return stage;
     }
