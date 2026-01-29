@@ -43,6 +43,14 @@ public class ViewFactory {
         return new ListaItinerariElementView(itinerario);
     }
 
+    public static ListaTappePerItinerarioView createListaTappePerItinerarioView(Itinerario itinerario) {
+        return new ListaTappePerItinerarioView(itinerario);
+    }
+
+    public static ListaTappePerItinerarioElementView createListaTappePerItinerarioElementView(Tappa tappa) {
+        return new ListaTappePerItinerarioElementView(tappa);
+    }
+
     //public static AggiungiTappaView createAggiungiTappaView() {
     //    return new AggiungiTappaView();
     //}

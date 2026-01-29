@@ -26,6 +26,11 @@ public class ListaItinerariElementViewController extends GraphicsController<List
         getView().getItineraryLabel().setText(itinerario.getNome());
         getView().getCostoLabel().setText(String.format("€%d", itinerario.getCosto()));
         getView().getDeleteButton().setOnMouseClicked(_ -> deleteButtonClicked());
+        getView().getRoot().setOnMouseClicked(_ -> elementClicked());
+    }
+
+    private void elementClicked() {
+        ViewNavigator.displayListaTappePerItinerarioView(itinerario);
     }
 
     private void deleteButtonClicked() {

@@ -15,15 +15,20 @@ public class ItinerariesController {
 
     public static List<Itinerario> getItinerari() throws DAOException {
 
-        List<Itinerario> itineraries;
-
         try {
-            itineraries = new ListaItinerariProcedureDAO().execute(null);
+           return new ListaItinerariProcedureDAO().execute(null);
         } catch (SQLException e) {
             throw new DAOException(e);
         }
+    }
 
-        return itineraries;
+    public static List<Tappa> getTappePerItinerario(Itinerario itinerario) throws DAOException {
+
+        try {
+            return new ListaTappePerItinerarioProcedureDAO().execute(itinerario.getNome());
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
     }
 
     public static void aggiungiItinerario(String nome, int costo, List<Tappa> tappe) throws DAOException, InvalidItineraryNameException {

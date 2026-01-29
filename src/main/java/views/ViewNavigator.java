@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import models.Itinerario;
 
 public class ViewNavigator {
 
@@ -41,6 +42,10 @@ public class ViewNavigator {
 
     public static void displayAggiungiTappaView() {
         ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiTappaView().getRoot());
+    }
+
+    public static void displayListaTappePerItinerarioView(Itinerario itinerario) {
+        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createListaTappePerItinerarioView(itinerario).getRoot());
     }
 
     public static Stage getStage() {
