@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" styleClass="root" stylesheets="@../styles/NuovaTappa.css" visible="true" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="20.0" styleClass="container">
+         <padding>
+            <Insets bottom="25.0" left="30.0" right="30.0" top="25.0" />
+         </padding>
+         <children>
+            <Label text="Nuovo Albergo" textFill="#18454a">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <HBox spacing="15.0">
+               <children>
+                  <VBox prefWidth="192.0" spacing="15.0">
+                     <children>
+                        <VBox VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Nome" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nomeTF" promptText="Inserisci nome..." />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Città" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="cittaTF" promptText="Inserisci città..." />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Indirizzo" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="indirizzoTF" promptText="Inserisci indirizzo..." />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Nome Referente" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="refNomeTF" promptText="Inserisci nome..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+
+                  <VBox prefWidth="192.0" spacing="15.0">
+                     <children>
+                        <VBox VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Costo" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="costoTF" promptText="0.00 €" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Capienza" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="capienzaTF" promptText="Numero posti..." />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Fax" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="faxTF" promptText="Numero fax..." />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Cognome Referente" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="cognomeTF" promptText="Inserisci cognome..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+
+                  <VBox prefWidth="192.0" spacing="15.0">
+                     <children>
+                        <VBox VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Email" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="emailTF" promptText="esempio@email.com" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Telefono" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="telefonoTF" promptText="+39..." />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Codice Fiscale Referente" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="cfTF" promptText="Codice Fiscale" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Button fx:id="aggiungiButton" mnemonicParsing="false" styleClass="button-primary" text="Aggiungi Albergo" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

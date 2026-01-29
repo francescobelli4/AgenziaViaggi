@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" styleClass="root" stylesheets="@../styles/NuovaTappa.css" visible="true" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="20.0" styleClass="container">
+         <padding>
+            <Insets bottom="25.0" left="30.0" right="30.0" top="25.0" />
+         </padding>
+         <children>
+            <Label fx:id="titleLabel" text="NomeAlbergo" textFill="#18454a">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <HBox spacing="15.0">
+               <children>
+                  <VBox prefWidth="192.0" spacing="15.0">
+                     <children>
+                        <VBox VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Nome" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="nomeTA" editable="false" prefHeight="29.0" prefWidth="66.0" text="NomeAlbergo">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font></TextArea>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Città" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="cittaTA" editable="false" prefHeight="29.0" prefWidth="66.0" text="NomeCittà" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Indirizzo" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="indirizzoTA" editable="false" prefHeight="29.0" prefWidth="66.0" text="Costo" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefWidth="192.0" spacing="15.0">
+                     <children>
+                        <VBox VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Costo" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="costoTA" editable="false" prefHeight="29.0" prefWidth="66.0" text="NomeAlbergo">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </TextArea>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Capienza" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="capienzaTA" editable="false" prefHeight="29.0" prefWidth="66.0" text="NomeCittà" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Referente" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="referenteTA" editable="false" prefHeight="29.0" prefWidth="66.0" text="Costo" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefWidth="192.0" spacing="15.0">
+                     <children>
+                        <VBox VBox.vgrow="NEVER">
+                           <children>
+                              <Label text="Email" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="emailTA" editable="false" prefHeight="29.0" prefWidth="66.0" text="NomeAlbergo">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </TextArea>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Telefono" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="telefonoTA" editable="false" prefHeight="29.0" prefWidth="66.0" text="NomeCittà" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Fax" textFill="#18454a">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="faxTA" editable="false" prefHeight="29.0" prefWidth="66.0" text="Costo" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

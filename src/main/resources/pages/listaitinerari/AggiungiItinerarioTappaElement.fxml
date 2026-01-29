@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="root" alignment="CENTER_LEFT" maxWidth="1.7976931348623157E308" spacing="15.0" styleClass="element" stylesheets="@../styles/ListaTappePerItinerario.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="tappaIcon" fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/location.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="tappaLabel" maxWidth="1.7976931348623157E308" text="NomeTappa" textFill="#18454a" HBox.hgrow="ALWAYS">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="tappaCheckbox" mnemonicParsing="false" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+   </padding>
+</HBox>
