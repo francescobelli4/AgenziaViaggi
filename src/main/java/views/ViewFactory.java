@@ -1,5 +1,6 @@
 package views;
 
+import graphicscontrollers.AggiungiViaggioItinerarioElementViewController;
 import models.*;
 
 public class ViewFactory {
@@ -92,5 +93,21 @@ public class ViewFactory {
 
     public static ListaClientiElementView createListaClientiElementView(Cliente cliente) {
         return new ListaClientiElementView(cliente);
+    }
+
+    public static ListaViaggiView createListaViaggiView() {
+        return new ListaViaggiView();
+    }
+
+    public static ListaViaggiElementView createListaViaggiElementView(Viaggio viaggio) {
+        return new ListaViaggiElementView(viaggio);
+    }
+
+    public static AggiungiViaggioView createAggiungiViaggioView() {
+        return new AggiungiViaggioView();
+    }
+
+    public static AggiungiViaggioItinerarioElementView createAggiungiViaggioItinerarioElementView(Itinerario itinerario) {
+        return new AggiungiViaggioItinerarioElementView(itinerario);
     }
 }

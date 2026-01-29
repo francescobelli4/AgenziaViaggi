@@ -22,7 +22,11 @@ public enum Page {
     LISTA_AUTOBUS_ELEMENT("/pages/listaautobus/ListaAutobusElement.fxml"),
     AGGIUNGI_AUTOBUS("/pages/listaautobus/AggiungiAutobus.fxml"),
     LISTA_CLIENTI("/pages/listaclienti/ListaClienti.fxml"),
-    LISTA_CLIENTI_ELEMENT("/pages/listaclienti/ListaClientiElement.fxml");
+    LISTA_CLIENTI_ELEMENT("/pages/listaclienti/ListaClientiElement.fxml"),
+    LISTA_VIAGGI("/pages/listaviaggi/ListaViaggi.fxml"),
+    LISTA_VIAGGI_ELEMENT("/pages/listaviaggi/ListaViaggiElement.fxml"),
+    AGGIUNGI_VIAGGIO("/pages/listaviaggi/AggiungiViaggio.fxml"),
+    AGGIUNGI_VIAGGIO_ITINERARIO_ELEMENT("/pages/listaviaggi/AggiungiViaggioItinerarioElement.fxml");
 
     private final String path;
 
