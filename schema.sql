@@ -39,9 +39,9 @@ CREATE TABLE IF NOT EXISTS `albergo` (
 
 -- Dump dei dati della tabella agenzia_viaggi.albergo: ~2 rows (circa)
 INSERT INTO `albergo` (`Nome`, `Indirizzo`, `Città`, `Costo`, `Capienza`, `Referente`, `Email`, `Telefono`, `Fax`) VALUES
-                                                                                                                       ('AAAAA', 'sdfdfs', 'Roma', 123, 14, 'feww', 'asdsadad', '243543543', 'fewfewfw'),
                                                                                                                        ('aasddsa', 'fdffd', 'Milano', 20, 25, 'MM', 'dsdsasad', 'ffff', 'gggg'),
-                                                                                                                       ('Mariani', 'Via Cave', 'Roma', 15, 25, 'MM', 'mm@gmail.com', '333333', '12313');
+                                                                                                                       ('Mariani', 'Via Cave', 'Roma', 15, 25, 'MM', 'mm@gmail.com', '333333', '12313'),
+                                                                                                                       ('NuovoAlbergo', 'sadada', 'Milano', 15, 13, 'dsadad', 'aaaa', '43224242', 'ffdsfdf');
 
 -- Dump della struttura di tabella agenzia_viaggi.autobus
 CREATE TABLE IF NOT EXISTS `autobus` (
@@ -137,10 +137,36 @@ BEGIN
 end//
 DELIMITER ;
 
+-- Dump della struttura di procedura agenzia_viaggi.EliminaAutobus
+DELIMITER //
+CREATE PROCEDURE `EliminaAutobus`(IN var_targa VARCHAR(7))
+BEGIN
+
+    DECLARE exit handler for sqlexception
+        BEGIN
+            ROLLBACK;
+            RESIGNAL;
+        END;
+
+    SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+    START TRANSACTION;
+
+    DELETE FROM autobus WHERE Targa = var_targa;
+    COMMIT;
+end//
+DELIMITER ;
+
 -- Dump della struttura di procedura agenzia_viaggi.EliminaItinerario
 DELIMITER //
 CREATE PROCEDURE `EliminaItinerario`(IN var_nome varchar(64))
 BEGIN
+
+    DECLARE exit handler for sqlexception
+        BEGIN
+            ROLLBACK;
+            RESIGNAL;
+        END;
+
     SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
     DELETE FROM itinerario WHERE Nome = var_nome;
     COMMIT;
@@ -153,6 +179,27 @@ CREATE PROCEDURE `EliminaTappa`(IN var_nome varchar(64))
 BEGIN
     SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
     DELETE FROM tappa WHERE Nome = var_nome;
+    COMMIT;
+END//
+DELIMITER ;
+
+-- Dump della struttura di procedura agenzia_viaggi.EliminaViaggio
+DELIMITER //
+CREATE PROCEDURE `EliminaViaggio`(IN var_codice varchar(64))
+BEGIN
+
+    DECLARE var_data_partenza DATE;
+
+    SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+    START TRANSACTION;
+
+    SELECT Partenza FROM viaggio WHERE Codice = var_codice;
+
+    IF DATEDIFF(var_data_partenza, CURDATE()) < 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Errore: Non è possibile eliminare un viaggio passato!';
+    END IF;
+
+    DELETE FROM viaggio WHERE Codice = var_codice;
     COMMIT;
 END//
 DELIMITER ;
@@ -212,7 +259,7 @@ BEGIN
         END;
 
     SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
-    START TRANSACTION READ ONLY;
+    START TRANSACTION;
 
     SELECT albergo.Nome as NomeAlbergo, Indirizzo, Città, Costo, Capienza, Email, Telefono, Fax, CF as CFReferente, referente.Nome as NomeReferente, Cognome as CognomeReferente  FROM albergo JOIN referente ON albergo.Referente = referente.CF ORDER BY Città;
 end//
@@ -247,6 +294,20 @@ BEGIN
 end//
 DELIMITER ;
 
+-- Dump della struttura di procedura agenzia_viaggi.ListaAutobus
+DELIMITER //
+CREATE PROCEDURE `ListaAutobus`()
+BEGIN
+
+    SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+    START TRANSACTION;
+
+    SELECT * FROM autobus;
+
+    COMMIT;
+end//
+DELIMITER ;
+
 -- Dump della struttura di procedura agenzia_viaggi.ListaAutobusPerViaggio
 DELIMITER //
 CREATE PROCEDURE `ListaAutobusPerViaggio`(IN var_codice_viaggio varchar(64))
@@ -274,12 +335,23 @@ BEGIN
 end//
 DELIMITER ;
 
+-- Dump della struttura di procedura agenzia_viaggi.ListaClienti
+DELIMITER //
+CREATE PROCEDURE `ListaClienti`()
+BEGIN
+    SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+    START TRANSACTION READ ONLY;
+    SELECT * FROM cliente ORDER BY Nome,Cognome;
+    COMMIT;
+END//
+DELIMITER ;
+
 -- Dump della struttura di procedura agenzia_viaggi.ListaItinerari
 DELIMITER //
 CREATE PROCEDURE `ListaItinerari`()
 BEGIN
     SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
-    START TRANSACTION READ ONLY;
+    START TRANSACTION;
     SELECT * FROM itinerario ;
     COMMIT;
 end//
@@ -369,7 +441,7 @@ CREATE PROCEDURE `ListaViaggi`()
 BEGIN
     SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
     START TRANSACTION READ ONLY;
-    SELECT * FROM viaggio;
+    SELECT * FROM viaggio ORDER BY Partenza;
     COMMIT;
 END//
 DELIMITER ;
@@ -456,7 +528,7 @@ BEGIN
         END;
 
     SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
-    START TRANSACTION READ WRITE;
+    START TRANSACTION;
 
     SELECT 1 INTO var_exists FROM tappa WHERE Nome = var_citta_albergo AND Tipo = 'Città' LIMIT 1;
     IF var_exists = 0 THEN
@@ -639,6 +711,7 @@ CREATE TABLE IF NOT EXISTS `referente` (
 
 -- Dump dei dati della tabella agenzia_viaggi.referente: ~0 rows (circa)
 INSERT INTO `referente` (`CF`, `Nome`, `Cognome`) VALUES
+                                                      ('dsadad', 'adsdad', 'dadasd'),
                                                       ('feww', 'AAAAsd', 'ffffff'),
                                                       ('MM', 'Manuel', 'Mariani');
 
