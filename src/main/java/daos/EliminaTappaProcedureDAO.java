@@ -19,6 +19,9 @@ public class EliminaTappaProcedureDAO implements GenericProcedureDAO<String, Voi
         cs.setString(1, input);
         cs.executeQuery();
 
+        conn.commit();
+        cs.close();
+
         return null;
     }
 }

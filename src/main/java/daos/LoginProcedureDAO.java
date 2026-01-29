@@ -25,6 +25,9 @@ public class LoginProcedureDAO implements GenericProcedureDAO<LoginRequestDTO, R
         cs.executeQuery();
         String result = cs.getString(3);
 
+        conn.commit();
+        cs.close();
+
         return Role.fromString(result);
     }
 }

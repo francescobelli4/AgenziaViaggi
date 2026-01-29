@@ -33,6 +33,9 @@ public class ListaItinerariProcedureDAO implements GenericProcedureDAO<Void, Lis
             itineraries.add(new Itinerario(nome, costo));
         }
 
+        conn.commit();
+        cs.close();
+
         return itineraries;
     }
 }

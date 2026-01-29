@@ -5,6 +5,7 @@ import daos.*;
 import dtos.ItinerarioDTO;
 import exception.DAOException;
 import exception.InvalidItineraryNameException;
+import exception.InvalidItineraryCostException;
 import models.Itinerario;
 import models.Tappa;
 
@@ -31,10 +32,14 @@ public class ItinerariesController {
         }
     }
 
-    public static void aggiungiItinerario(String nome, int costo, List<Tappa> tappe) throws DAOException, InvalidItineraryNameException {
+    public static void aggiungiItinerario(String nome, int costo, List<Tappa> tappe) throws DAOException, InvalidItineraryNameException, InvalidItineraryCostException {
 
         if (nome.isBlank()) {
             throw new InvalidItineraryNameException();
+        }
+
+        if (costo <= 0) {
+            throw new InvalidItineraryCostException();
         }
 
         try {

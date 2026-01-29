@@ -20,6 +20,7 @@ public class AppContext {
             connection.close();
 
         connection = DriverManager.getConnection(Utils.getProperty("CONNECTION_URL"), user, password);
+        connection.setAutoCommit(false);
         LOGGER.info("Successfully connected to the db! :D");
     }
 

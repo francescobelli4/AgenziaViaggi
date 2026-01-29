@@ -33,6 +33,9 @@ public class ListaTappePerItinerarioProcedureDAO implements GenericProcedureDAO<
             tappe.add(new Tappa(nome, Tappa.Tipo.fromString(tipo)));
         }
 
+        conn.commit();
+        cs.close();
+
         return tappe;
     }
 }

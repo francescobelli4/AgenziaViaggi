@@ -37,7 +37,6 @@ public class ListaItinerariViewController extends GraphicsController<ListaItiner
 
             List<Node> itinerariNodes = new ArrayList<>();
             for (Itinerario i : itinerari) {
-                System.out.println("NOEM: " + i.getNome());
                 itinerariNodes.add(ViewFactory.createListaItinerariElementView(i).getRoot());
             }
 
@@ -48,6 +47,6 @@ public class ListaItinerariViewController extends GraphicsController<ListaItiner
     }
 
     private void addButtonClicked() {
-
+        ViewNavigator.displayAggiungiItinerarioView();
     }
 }

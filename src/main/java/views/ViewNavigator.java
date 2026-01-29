@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import models.Albergo;
 import models.Itinerario;
 
 public class ViewNavigator {
@@ -46,6 +47,18 @@ public class ViewNavigator {
 
     public static void displayListaTappePerItinerarioView(Itinerario itinerario) {
         ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createListaTappePerItinerarioView(itinerario).getRoot());
+    }
+
+    public static void displayAggiungiItinerarioView() {
+        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiItinerarioView().getRoot());
+    }
+
+    public static void displayAlbergoInfoView(Albergo albergo) {
+        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAlbergoInfoView(albergo).getRoot());
+    }
+
+    public static void displayAggiungiAlbergoView() {
+        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiAlbergoView().getRoot());
     }
 
     public static Stage getStage() {

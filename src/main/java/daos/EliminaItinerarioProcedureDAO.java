@@ -19,6 +19,9 @@ public class EliminaItinerarioProcedureDAO implements GenericProcedureDAO<String
         cs.setString(1, input);
         cs.executeQuery();
 
+        conn.commit();
+        cs.close();
+
         return null;
     }
 }

@@ -11,8 +11,13 @@ public enum Page {
     LISTA_ITINERARI("/pages/listaitinerari/ListaItinerari.fxml"),
     LISTA_ITINERARI_ELEMENT("/pages/listaitinerari/ListaItinerariElement.fxml"),
     AGGIUNGI_ITINERARIO("/pages/listaitinerari/AggiungiItinerario.fxml"),
+    AGGIUNGI_ITINERARIO_ELEMENT("/pages/listaitinerari/AggiungiItinerarioTappaElement.fxml"),
     LISTA_TAPPE_PER_ITINERARIO("/pages/listaitinerari/ListaTappePerItinerario.fxml"),
-    LISTA_TAPPE_PER_ITINERARIO_ELEMENT("/pages/listaitinerari/ListaTappePerItinerarioElement.fxml");
+    LISTA_TAPPE_PER_ITINERARIO_ELEMENT("/pages/listaitinerari/ListaTappePerItinerarioElement.fxml"),
+    LISTA_ALBERGHI("/pages/listaalberghi/ListaAlberghi.fxml"),
+    LISTA_ALBERGHI_ELEMENT("/pages/listaalberghi/ListaAlberghiElement.fxml"),
+    ALBERGO_INFO("/pages/listaalberghi/AlbergoInfo.fxml"),
+    AGGIUNGI_ALBERGO("/pages/listaalberghi/AggiungiAlbergo.fxml");
 
     private final String path;
 

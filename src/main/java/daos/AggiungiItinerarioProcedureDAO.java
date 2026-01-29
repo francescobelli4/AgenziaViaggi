@@ -23,6 +23,9 @@ public class AggiungiItinerarioProcedureDAO implements GenericProcedureDAO<Itine
         cs.setString(3, input.tappe());
         cs.executeQuery();
 
+        conn.commit();
+        cs.close();
+
         return null;
     }
 }

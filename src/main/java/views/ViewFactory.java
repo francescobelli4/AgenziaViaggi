@@ -1,5 +1,6 @@
 package views;
 
+import models.Albergo;
 import models.Itinerario;
 import models.Tappa;
 
@@ -51,7 +52,27 @@ public class ViewFactory {
         return new ListaTappePerItinerarioElementView(tappa);
     }
 
-    //public static AggiungiTappaView createAggiungiTappaView() {
-    //    return new AggiungiTappaView();
-    //}
+    public static AggiungiItinerarioView createAggiungiItinerarioView() {
+        return new AggiungiItinerarioView();
+    }
+
+    public static AggiungiItinerarioTappaElementView createAggiungiItinerarioTappaElementView(Tappa tappa) {
+        return new AggiungiItinerarioTappaElementView(tappa);
+    }
+
+    public static ListaAlberghiView createListaAlberghiView() {
+        return new ListaAlberghiView();
+    }
+
+    public static ListaAlberghiElementView createListaAlberghiElementView(Albergo albergo) {
+        return new ListaAlberghiElementView(albergo);
+    }
+
+    public static AlbergoInfoView createAlbergoInfoView(Albergo albergo) {
+        return new AlbergoInfoView(albergo);
+    }
+
+    public static AggiungiAlbergoView createAggiungiAlbergoView() {
+        return new AggiungiAlbergoView();
+    }
 }
