@@ -1,12 +1,13 @@
 package graphicscontrollers;
 
 import appcontrollers.HotelController;
-import appcontrollers.ItinerariesController;
 import exception.DAOException;
 import javafx.scene.Node;
 import models.Albergo;
-import models.Itinerario;
-import views.*;
+import views.Icon;
+import views.ListaAlberghiView;
+import views.ViewFactory;
+import views.ViewNavigator;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,10 +2,8 @@ package views;
 
 import graphicscontrollers.AggiungiItinerarioTappaElementViewController;
 import graphicscontrollers.GraphicsController;
-import graphicscontrollers.ListaItinerariElementViewController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;

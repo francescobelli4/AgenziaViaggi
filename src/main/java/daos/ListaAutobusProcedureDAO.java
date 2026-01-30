@@ -3,7 +3,6 @@ package daos;
 import app.AppContext;
 import exception.DAOException;
 import models.Autobus;
-import models.Tappa;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;

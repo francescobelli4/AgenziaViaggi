@@ -1,14 +1,13 @@
 package graphicscontrollers;
 
 import appcontrollers.ItinerariesController;
-import appcontrollers.StopsController;
-import exception.DAOException;
-import exception.InvalidStopNameException;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import models.Itinerario;
 import models.Tappa;
-import views.*;
+import views.ListaTappePerItinerarioView;
+import views.ViewFactory;
+import views.ViewNavigator;
 
 import java.util.ArrayList;
 import java.util.List;

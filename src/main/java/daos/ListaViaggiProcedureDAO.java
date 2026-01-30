@@ -2,8 +2,6 @@ package daos;
 
 import app.AppContext;
 import exception.DAOException;
-import models.Albergo;
-import models.Referente;
 import models.Viaggio;
 
 import java.sql.CallableStatement;

@@ -3,7 +3,7 @@ package graphicscontrollers;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import models.Itinerario;
-import views.*;
+import views.AggiungiViaggioItinerarioElementView;
 
 
 public class AggiungiViaggioItinerarioElementViewController extends GraphicsController<AggiungiViaggioItinerarioElementView> {

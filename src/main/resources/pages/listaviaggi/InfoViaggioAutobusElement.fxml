@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<HBox fx:id="root" alignment="CENTER_LEFT" spacing="15.0" styleClass="tappa-item" stylesheets="@../styles/InfoViaggioListaAlberghiPerCittàElement.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="iconImageView" fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/bus.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="targaLabel" text="Targa" />
+      <Pane HBox.hgrow="ALWAYS" />
+      <Label fx:id="costLabel" text="Costo" />
+      <Pane HBox.hgrow="ALWAYS" />
+      <Label fx:id="capienzaLabel" text="Capienza" />
+      <Pane HBox.hgrow="ALWAYS" />
+      <CheckBox fx:id="checkBox" mnemonicParsing="false" />
+   </children>
+   <padding>
+      <Insets left="10.0" right="10.0" />
+   </padding>
+</HBox>

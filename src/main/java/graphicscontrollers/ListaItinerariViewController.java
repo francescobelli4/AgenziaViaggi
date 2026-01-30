@@ -1,17 +1,18 @@
 package graphicscontrollers;
 
 import appcontrollers.ItinerariesController;
-import appcontrollers.StopsController;
 import exception.DAOException;
 import javafx.scene.Node;
 import models.Itinerario;
-import models.Tappa;
-import views.*;
+import models.Role;
+import models.User;
+import views.Icon;
+import views.ListaItinerariView;
+import views.ViewFactory;
+import views.ViewNavigator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ListaItinerariViewController extends GraphicsController<ListaItinerariView> {
 
@@ -24,6 +25,11 @@ public class ListaItinerariViewController extends GraphicsController<ListaItiner
 
     @Override
     public void loaded() {
+
+        if (User.getInstance().getRole() == Role.BOOKING) {
+            getView().getAddButton().setVisible(false);
+            getView().getAddButton().setManaged(false);
+        }
 
         getView().getAddButton().setOnMouseClicked(_ -> addButtonClicked());
 

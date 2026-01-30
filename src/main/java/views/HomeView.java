@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import models.User;
@@ -32,9 +33,16 @@ public class HomeView implements View {
     private Button listaAutobusButton;
     @FXML
     private Button listaClientiButton;
+    @FXML
+    private Button disdiciPrenotazioneButton;
+    @FXML
+    private Button reportsButton;
+    @FXML
+    private TitledPane logistics;
+    @FXML
+    private TitledPane customers;
 
     private View activeView;
-
 
     private static final Page page = Page.HOME;
     private final GraphicsController<HomeView> graphicsController;
@@ -69,6 +77,14 @@ public class HomeView implements View {
         this.activeView = activeView;
     }
 
+    public TitledPane getLogistics() {
+        return logistics;
+    }
+
+    public TitledPane getCustomers() {
+        return customers;
+    }
+
     public Button getListaAlberghiButton() {
         return listaAlberghiButton;
     }
@@ -91,6 +107,14 @@ public class HomeView implements View {
 
     public Button getListaViaggiButton() {
         return listaViaggiButton;
+    }
+
+    public Button getReportsButton() {
+        return reportsButton;
+    }
+
+    public Button getDisdiciPrenotazioneButton() {
+        return disdiciPrenotazioneButton;
     }
 
     @Override

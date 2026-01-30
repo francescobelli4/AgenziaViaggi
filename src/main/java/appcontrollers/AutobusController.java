@@ -1,14 +1,12 @@
 package appcontrollers;
 
-import daos.*;
+import daos.AggiungiAutobusProcedureDAO;
+import daos.EliminaAutobusProcedureDAO;
+import daos.ListaAutobusProcedureDAO;
 import dtos.AutobusDTO;
-import dtos.TappaDTO;
 import exception.DAOException;
 import exception.InvalidAutobusDataException;
-import exception.InvalidHotelDataException;
-import exception.InvalidStopNameException;
 import models.Autobus;
-import models.Tappa;
 
 import java.sql.SQLException;
 import java.util.List;

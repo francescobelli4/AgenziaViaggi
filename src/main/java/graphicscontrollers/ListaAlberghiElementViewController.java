@@ -1,10 +1,8 @@
 package graphicscontrollers;
 
 import appcontrollers.HotelController;
-import appcontrollers.ItinerariesController;
 import exception.DAOException;
 import models.Albergo;
-import models.Itinerario;
 import views.*;
 
 public class ListaAlberghiElementViewController extends GraphicsController<ListaAlberghiElementView> {

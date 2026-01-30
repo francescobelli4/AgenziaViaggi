@@ -2,14 +2,12 @@ package views;
 
 import graphicscontrollers.GraphicsController;
 import graphicscontrollers.ListaAlberghiElementViewController;
-import graphicscontrollers.ListaItinerariElementViewController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import models.Albergo;
-import models.Itinerario;
 import utils.Utils;
 
 public class ListaAlberghiElementView implements View {

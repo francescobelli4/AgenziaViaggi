@@ -1,6 +1,5 @@
 package views;
 
-import graphicscontrollers.AggiungiViaggioItinerarioElementViewController;
 import models.*;
 
 public class ViewFactory {
@@ -109,5 +108,49 @@ public class ViewFactory {
 
     public static AggiungiViaggioItinerarioElementView createAggiungiViaggioItinerarioElementView(Itinerario itinerario) {
         return new AggiungiViaggioItinerarioElementView(itinerario);
+    }
+
+    public static InfoViaggioView createInfoViaggioView(Viaggio viaggio) {
+        return new InfoViaggioView(viaggio);
+    }
+
+    public static InfoViaggioTappaElementView createInfoViaggioTappaElementView(Tappa tappa) {
+        return new InfoViaggioTappaElementView(tappa);
+    }
+
+    public static InfoViaggioListaAlberghiPerCittaView createInfoViaggioListaAlberghiPerCittaView(Tappa citta) {
+        return new InfoViaggioListaAlberghiPerCittaView(citta);
+    }
+
+    public static InfoViaggioListaAlberghiPerCittaElementView createInfoViaggioListaAlberghiPerCittaElementView(Albergo albergo) {
+        return new InfoViaggioListaAlberghiPerCittaElementView(albergo);
+    }
+
+    public static InfoViaggioAutobusElementView createInfoViaggioAutobusElementView(Autobus autobus) {
+        return new InfoViaggioAutobusElementView(autobus);
+    }
+
+    public static AggiungiPrenotazioneView createAggiungiPrenotazioneView(Viaggio viaggio) {
+        return new AggiungiPrenotazioneView(viaggio);
+    }
+
+    public static AggiungiPrenotazioneElementView createAggiungiPrenotazioneElementView() {
+        return new AggiungiPrenotazioneElementView();
+    }
+
+    public static InfoViaggioPrenotazioneElementView createInfoViaggioPrenotazioneElementView(String codicePrenotazione, String codiceDisdetta, Cliente cliente) {
+        return new InfoViaggioPrenotazioneElementView(codicePrenotazione, codiceDisdetta, cliente);
+    }
+
+    public static DisdiciPrenotazioneView createDisdiciPrenotazioneView() {
+        return new DisdiciPrenotazioneView();
+    }
+
+    public static ReportsView createReportsView() {
+        return new ReportsView();
+    }
+
+    public static ReportsElementView createReportsElementView(Report report) {
+        return new ReportsElementView(report);
     }
 }

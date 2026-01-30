@@ -2,18 +2,12 @@ package views;
 
 import graphicscontrollers.AggiungiViaggioItinerarioElementViewController;
 import graphicscontrollers.GraphicsController;
-import graphicscontrollers.ListaAutobusViewController;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import models.Itinerario;
 import utils.Utils;
-
-import java.util.List;
 
 public class AggiungiViaggioItinerarioElementView implements View {
 

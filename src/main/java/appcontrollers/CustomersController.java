@@ -1,13 +1,10 @@
 package appcontrollers;
 
-import daos.AggiungiAutobusProcedureDAO;
-import daos.EliminaAutobusProcedureDAO;
-import daos.ListaAutobusProcedureDAO;
+import daos.DisdiciPrenotazioneProcedureDAO;
 import daos.ListaClientiProcedureDAO;
-import dtos.AutobusDTO;
+import daos.NuovaPrenotazioneProcedureDAO;
+import dtos.PrenotazioneDTO;
 import exception.DAOException;
-import exception.InvalidAutobusDataException;
-import models.Autobus;
 import models.Cliente;
 
 import java.sql.SQLException;
@@ -18,6 +15,22 @@ public class CustomersController {
     public static List<Cliente> getCustomers() throws DAOException {
         try {
             return new ListaClientiProcedureDAO().execute(null);
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static void aggiungiPrenotazione(PrenotazioneDTO prenotazione) throws DAOException {
+        try {
+            new NuovaPrenotazioneProcedureDAO().execute(prenotazione);
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static void disdiciPrenotazione(String codiceDisdetta) throws DAOException {
+        try {
+            new DisdiciPrenotazioneProcedureDAO().execute(codiceDisdetta);
         } catch (SQLException e) {
             throw new DAOException(e);
         }

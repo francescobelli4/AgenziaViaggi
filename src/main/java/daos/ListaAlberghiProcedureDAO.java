@@ -4,7 +4,6 @@ import app.AppContext;
 import exception.DAOException;
 import models.Albergo;
 import models.Referente;
-import models.Tappa;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;

@@ -2,20 +2,13 @@ package views;
 
 import graphicscontrollers.GraphicsController;
 import graphicscontrollers.ListaTappePerItinerarioElementViewController;
-import graphicscontrollers.ListaTappePerItinerarioViewController;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import models.Itinerario;
 import models.Tappa;
 import utils.Utils;
-
-import java.util.List;
 
 public class ListaTappePerItinerarioElementView implements View {
 

@@ -1,0 +1,22 @@
+.tappa-item {
+    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+}
+
+.citta {
+    -fx-border-color: #18454a;
+    -fx-border-width: 2px;
+    -fx-background-color: #faffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(24, 69, 74, 0.1), 5, 0, 0, 2);
+    -fx-font-weight: bold;
+    -fx-text-fill: #18454a;
+}
+
+.citta:hover {
+    -fx-background-color: #eef9fa;
+    -fx-border-color: #2a7a82;
+}

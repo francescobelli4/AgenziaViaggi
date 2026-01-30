@@ -1,12 +1,9 @@
 package graphicscontrollers;
 
-import appcontrollers.StopsController;
-import exception.DAOException;
-import exception.InvalidStopNameException;
 import javafx.scene.layout.StackPane;
 import models.Albergo;
-import models.Tappa;
-import views.*;
+import views.AlbergoInfoView;
+import views.ViewNavigator;
 
 public class AlbergoInfoViewController extends GraphicsController<AlbergoInfoView> {
 

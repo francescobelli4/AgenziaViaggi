@@ -1,11 +1,12 @@
 package appcontrollers;
 
-import daos.*;
+import daos.AggiungiAlbergoProcedureDAO;
+import daos.EliminaAlbergoProcedureDAO;
+import daos.ListaAlberghiPerCittaProcedureDAO;
+import daos.ListaAlberghiProcedureDAO;
 import dtos.AlbergoDTO;
-import dtos.TappaDTO;
 import exception.DAOException;
 import exception.InvalidHotelDataException;
-import exception.InvalidStopNameException;
 import models.Albergo;
 import models.Tappa;
 
@@ -17,6 +18,14 @@ public class HotelController {
     public static List<Albergo> getAlberghi() throws DAOException {
         try {
             return new ListaAlberghiProcedureDAO().execute(null);
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static List<Albergo> getAlberghiPerCitta(Tappa citta) throws DAOException {
+        try {
+            return new ListaAlberghiPerCittaProcedureDAO().execute(citta.getNome());
         } catch (SQLException e) {
             throw new DAOException(e);
         }

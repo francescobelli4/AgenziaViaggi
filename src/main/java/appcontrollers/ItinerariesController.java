@@ -1,11 +1,14 @@
 package appcontrollers;
 
 import com.google.gson.Gson;
-import daos.*;
+import daos.AggiungiItinerarioProcedureDAO;
+import daos.EliminaItinerarioProcedureDAO;
+import daos.ListaItinerariProcedureDAO;
+import daos.ListaTappePerItinerarioProcedureDAO;
 import dtos.ItinerarioDTO;
 import exception.DAOException;
-import exception.InvalidItineraryNameException;
 import exception.InvalidItineraryCostException;
+import exception.InvalidItineraryNameException;
 import models.Itinerario;
 import models.Tappa;
 
@@ -27,6 +30,15 @@ public class ItinerariesController {
 
         try {
             return new ListaTappePerItinerarioProcedureDAO().execute(itinerario.getNome());
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static List<Tappa> getTappePerItinerario(String itinerario) throws DAOException {
+
+        try {
+            return new ListaTappePerItinerarioProcedureDAO().execute(itinerario);
         } catch (SQLException e) {
             throw new DAOException(e);
         }

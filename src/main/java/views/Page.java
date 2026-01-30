@@ -26,7 +26,18 @@ public enum Page {
     LISTA_VIAGGI("/pages/listaviaggi/ListaViaggi.fxml"),
     LISTA_VIAGGI_ELEMENT("/pages/listaviaggi/ListaViaggiElement.fxml"),
     AGGIUNGI_VIAGGIO("/pages/listaviaggi/AggiungiViaggio.fxml"),
-    AGGIUNGI_VIAGGIO_ITINERARIO_ELEMENT("/pages/listaviaggi/AggiungiViaggioItinerarioElement.fxml");
+    AGGIUNGI_VIAGGIO_ITINERARIO_ELEMENT("/pages/listaviaggi/AggiungiViaggioItinerarioElement.fxml"),
+    INFO_VIAGGIO("/pages/listaviaggi/InfoViaggio.fxml"),
+    INFO_VIAGGIO_TAPPA_ELEMENT("/pages/listaviaggi/InfoViaggioTappaElement.fxml"),
+    INFO_VIAGGIO_LISTA_ALBERGHI_PER_CITTA("/pages/listaviaggi/InfoViaggioListaAlberghiPerCittà.fxml"),
+    INFO_VIAGGIO_LISTA_ALBERGHI_PER_CITTA_ELEMENT("/pages/listaviaggi/InfoViaggioListaAlberghiPerCittàElement.fxml"),
+    INFO_VIAGGIO_AUTOBUS_ELEMENT("/pages/listaviaggi/InfoViaggioAutobusElement.fxml"),
+    AGGIUNGI_PRENOTAZIONE("/pages/listaviaggi/AggiungiPrenotazione.fxml"),
+    AGGIUNGI_PRENOTAZIONE_ELEMENT("/pages/listaviaggi/AggiungiPrenotazioneElement.fxml"),
+    INFO_VIAGGIO_PRENOTAZIONE_ELEMENT("/pages/listaviaggi/InfoViaggioPrenotazioneElement.fxml"),
+    DISDICI_PRENOTAZIONE("/pages/DisdiciPrenotazione.fxml"),
+    REPORT_VIAGGI("/pages/Report.fxml"),
+    REPORT_VIAGGI_ELEMENT("/pages/ReportElement.fxml");
 
     private final String path;
 

@@ -31,9 +31,6 @@ public class ListaTappeElementViewController extends GraphicsController<ListaTap
 
         getView().getIconImageView().setImage(image);
 
-        getView().getStopActionButton().setManaged(tappa.getTipo() == Tappa.Tipo.CITTA);
-        getView().getStopActionButton().setVisible(tappa.getTipo() == Tappa.Tipo.CITTA);
-
         getView().getDeleteButton().setOnMouseClicked(_ -> deleteButtonClicked());
     }
 

@@ -1,9 +1,5 @@
 package models;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.Objects;
-
 public class Albergo {
 
     private final String nome;
@@ -26,6 +22,10 @@ public class Albergo {
         this.email = email;
         this.telefono = telefono;
         this.fax = fax;
+    }
+
+    public Albergo(String nome, String indirizzo, String citta) {
+        this(nome, indirizzo, citta, -1, -1, null, "", "", "");
     }
 
     public String getNome() {

@@ -1,20 +1,11 @@
 package graphicscontrollers;
 
 import appcontrollers.HotelController;
-import appcontrollers.ItinerariesController;
-import appcontrollers.StopsController;
 import dtos.AlbergoDTO;
 import exception.DAOException;
 import exception.InvalidHotelDataException;
-import exception.InvalidItineraryCostException;
-import exception.InvalidItineraryNameException;
-import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
-import models.Tappa;
 import views.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AggiungiAlbergoViewController extends GraphicsController<AggiungiAlbergoView> {
 

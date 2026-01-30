@@ -1,9 +1,7 @@
 package graphicscontrollers;
 
-import appcontrollers.AutobusController;
-import exception.DAOException;
 import models.Cliente;
-import views.*;
+import views.ListaClientiElementView;
 
 public class ListaClientiElementViewController extends GraphicsController<ListaClientiElementView> {
 

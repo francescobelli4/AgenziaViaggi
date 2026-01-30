@@ -1,0 +1,27 @@
+.root {
+    -fx-background-color: rgba(0,0,0,0.5);
+}
+
+.container {
+    -fx-background-color: white;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);
+}
+
+.textfield {
+    -fx-background-color: #f5f5f5;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+}
+
+.button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8px;
+}
+
+.conferma {
+    -fx-background-color: #18454a;
+    -fx-background-radius: 8px;
+}

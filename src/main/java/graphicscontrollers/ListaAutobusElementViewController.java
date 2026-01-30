@@ -1,9 +1,7 @@
 package graphicscontrollers;
 
 import appcontrollers.AutobusController;
-import appcontrollers.HotelController;
 import exception.DAOException;
-import models.Albergo;
 import models.Autobus;
 import views.*;
 

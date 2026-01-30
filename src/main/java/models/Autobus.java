@@ -1,9 +1,5 @@
 package models;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.Objects;
-
 public class Autobus {
 
     private final String targa;

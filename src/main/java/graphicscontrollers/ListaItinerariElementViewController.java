@@ -1,14 +1,9 @@
 package graphicscontrollers;
 
 import appcontrollers.ItinerariesController;
-import appcontrollers.StopsController;
 import exception.DAOException;
-import javafx.scene.image.Image;
 import models.Itinerario;
-import models.Tappa;
 import views.*;
-
-import java.util.Objects;
 
 public class ListaItinerariElementViewController extends GraphicsController<ListaItinerariElementView> {
 

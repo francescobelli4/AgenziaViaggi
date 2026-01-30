@@ -92,7 +92,7 @@
                                     </font>
                                 </TitledPane>
 
-                                <TitledPane text="Logistica &amp; Risorse">
+                                <TitledPane fx:id="logistics" text="Logistica &amp; Risorse">
                                     <content>
                                         <VBox spacing="10.0">
                                             <children>
@@ -106,6 +106,11 @@
                                                         <Font size="14.0" />
                                                     </font>
                                                 </Button>
+                                    <Button fx:id="reportsButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Reports">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
                                             </children>
                                         </VBox>
                                     </content>
@@ -114,7 +119,7 @@
                                     </font>
                                 </TitledPane>
 
-                                <TitledPane text="Gestione Clienti">
+                                <TitledPane fx:id="customers" text="Gestione Clienti">
                                     <content>
                                         <VBox spacing="10.0">
                                             <children>
@@ -123,6 +128,11 @@
                                                         <Font size="14.0" />
                                                     </font>
                                                 </Button>
+                                    <Button fx:id="disdiciPrenotazioneButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Disdici Prenotazione">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
                                             </children>
                                         </VBox>
                                     </content>

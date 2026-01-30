@@ -1,19 +1,13 @@
 package views;
 
 import graphicscontrollers.AggiungiAlbergoViewController;
-import graphicscontrollers.AggiungiItinerarioViewController;
 import graphicscontrollers.GraphicsController;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import utils.Utils;
-
-import java.util.List;
 
 public class AggiungiAlbergoView implements View {
 

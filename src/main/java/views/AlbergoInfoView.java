@@ -1,21 +1,14 @@
 package views;
 
-import graphicscontrollers.AggiungiItinerarioViewController;
 import graphicscontrollers.AlbergoInfoViewController;
 import graphicscontrollers.GraphicsController;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import models.Albergo;
 import utils.Utils;
-
-import java.util.List;
 
 public class AlbergoInfoView implements View {
 

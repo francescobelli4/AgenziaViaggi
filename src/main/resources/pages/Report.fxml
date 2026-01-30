@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="root" spacing="15.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER_LEFT">
+         <children>
+            <Label text="Report Viaggi" textFill="#18454a">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Pane HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+
+      <HBox spacing="15.0" style="-fx-background-color: #f0f4f5; -fx-background-radius: 5;">
+         <padding>
+            <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+         </padding>
+         <children>
+            <Label minWidth="200.0" text="DETTAGLI VIAGGIO" textFill="#555555">
+               <font><Font name="System Bold" size="12.0" /></font>
+            </Label>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label minWidth="100.0" text="ENTRATE" textFill="#555555">
+               <font><Font name="System Bold" size="12.0" /></font>
+            </Label>
+            <Label minWidth="100.0" text="USCITE" textFill="#555555">
+               <font><Font name="System Bold" size="12.0" /></font>
+            </Label>
+            <Label minWidth="120.0" text="GUADAGNO NETTO" textFill="#555555">
+               <font><Font name="System Bold" size="12.0" /></font>
+            </Label>
+         </children>
+      </HBox>
+
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox fx:id="reportsList" spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

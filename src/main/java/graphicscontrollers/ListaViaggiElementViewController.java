@@ -1,14 +1,10 @@
 package graphicscontrollers;
 
-import appcontrollers.AutobusController;
-import appcontrollers.ToursController;
-import exception.DAOException;
-import models.Autobus;
 import models.Viaggio;
-import views.*;
+import views.ListaViaggiElementView;
+import views.ViewNavigator;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.time.format.DateTimeFormatter;
 
 public class ListaViaggiElementViewController extends GraphicsController<ListaViaggiElementView> {
 
@@ -24,28 +20,16 @@ public class ListaViaggiElementViewController extends GraphicsController<ListaVi
     @Override
     public void loaded() {
 
-        if (ChronoUnit.DAYS.between(LocalDate.now(), viaggio.getPartenza()) <= 0) {
-            getView().getDeleteButton().setManaged(false);
-            getView().getDeleteButton().setVisible(false);
-        }
-
         getView().getCodiceViaggioLabel().setText(viaggio.getCodice());
         getView().getItineraryLabel().setText(viaggio.getItinerario());
-        getView().getPartenzaLabel().setText(String.format("Partenza: %s", viaggio.getPartenza().toString()));
-        getView().getRitornoLabel().setText(String.format("Ritorno: %s", viaggio.getRitorno().toString()));
+        getView().getPartenzaLabel().setText(String.format("Partenza: %s", viaggio.getPartenza().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+        getView().getRitornoLabel().setText(String.format("Ritorno: %s", viaggio.getRitorno().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
 
-        getView().getDeleteButton().setOnMouseClicked(_ -> deleteButtonClicked());
+        getView().getRoot().setOnMouseClicked(_ -> elementClicked());
     }
 
-    private void deleteButtonClicked() {
-        try {
-            ToursController.eliminaViaggio(viaggio);
-
-            ListaViaggiView listaViaggi = (ListaViaggiView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaViaggiViewController)listaViaggi.getGraphicsController()).updateLists();
-        } catch (DAOException e) {
-            ViewNavigator.displayNotification("Errore", e.getMessage(), Icon.APPICON);
-        }
+    private void elementClicked() {
+        ViewNavigator.displayInfoViaggioView(viaggio);
     }
 
     public Viaggio getViaggio() {

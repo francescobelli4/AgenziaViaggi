@@ -1,17 +1,14 @@
 package graphicscontrollers;
 
 import appcontrollers.ItinerariesController;
-import appcontrollers.StopsController;
 import appcontrollers.ToursController;
-import exception.*;
+import exception.DAOException;
+import exception.InvalidTourDataException;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import models.Itinerario;
-import models.Tappa;
 import views.*;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 

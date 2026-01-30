@@ -1,0 +1,14 @@
+.tappa-item {
+    -fx-padding: 10px;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+}
+
+
+.tappa-item:hover {
+    -fx-background-color: #eef9fa;
+    -fx-border-color: #2a7a82;
+}

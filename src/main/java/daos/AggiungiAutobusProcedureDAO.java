@@ -1,7 +1,6 @@
 package daos;
 
 import app.AppContext;
-import dtos.AlbergoDTO;
 import dtos.AutobusDTO;
 import exception.DAOException;
 

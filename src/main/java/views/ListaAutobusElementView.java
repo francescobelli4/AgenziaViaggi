@@ -1,15 +1,12 @@
 package views;
 
-import appcontrollers.AutobusController;
 import graphicscontrollers.GraphicsController;
-import graphicscontrollers.ListaAlberghiElementViewController;
 import graphicscontrollers.ListaAutobusElementViewController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import models.Albergo;
 import models.Autobus;
 import utils.Utils;
 

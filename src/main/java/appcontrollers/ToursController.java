@@ -1,16 +1,13 @@
 package appcontrollers;
 
+import com.google.gson.Gson;
 import daos.*;
-import dtos.AutobusDTO;
+import dtos.ScegliAlberghiDTO;
+import dtos.ScegliAutobusDTO;
 import dtos.ViaggioDTO;
 import exception.DAOException;
-import exception.InvalidAutobusDataException;
 import exception.InvalidTourDataException;
-import models.Autobus;
-import models.Itinerario;
-import models.Viaggio;
-import views.Icon;
-import views.ViewNavigator;
+import models.*;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -52,6 +49,49 @@ public class ToursController {
 
         try {
             new EliminaViaggioProcedureDAO().execute(viaggio.getCodice());
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static List<Prenotazione> getPrenotazioniPerViaggio(Viaggio viaggio) {
+        try {
+            return new ListaPrenotazioniPerViaggioProcedureDAO().execute(viaggio.getCodice());
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static List<String> getAutobusPerViaggio(Viaggio viaggio) {
+        try {
+            return new ListaAutobusPerViaggioProcedureDAO().execute(viaggio.getCodice());
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static List<Pernottamento> getPernottamentiPerViaggio(Viaggio viaggio) throws DAOException {
+        try {
+            return new ListaPernottamentiPerViaggioProcedureDAO().execute(viaggio.getCodice());
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static void scegliLogisticaViaggio(Viaggio viaggio, List<Pernottamento> pernottamenti, List<Autobus> autobus) throws DAOException {
+        try {
+            ScegliAlberghiDTO dto = new ScegliAlberghiDTO(viaggio.getCodice(), new Gson().toJson(pernottamenti));
+            ScegliAutobusDTO autobusDTO = new ScegliAutobusDTO(viaggio.getCodice(), new Gson().toJson(autobus));
+            new ScegliAlberghiProcedureDAO().execute(dto);
+            new ScegliAutobusProcedureDAO().execute(autobusDTO);
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+    }
+
+    public static List<Report> generateReports() {
+        try {
+            return new GeneraReportProcedureDAO().execute(null);
         } catch (SQLException e) {
             throw new DAOException(e);
         }

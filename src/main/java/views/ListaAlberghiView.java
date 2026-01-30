@@ -2,7 +2,6 @@ package views;
 
 import graphicscontrollers.GraphicsController;
 import graphicscontrollers.ListaAlberghiViewController;
-import graphicscontrollers.ListaItinerariViewController;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;

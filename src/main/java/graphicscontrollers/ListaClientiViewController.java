@@ -1,11 +1,9 @@
 package graphicscontrollers;
 
 import appcontrollers.CustomersController;
-import appcontrollers.ItinerariesController;
 import exception.DAOException;
 import javafx.scene.Node;
 import models.Cliente;
-import models.Itinerario;
 import views.Icon;
 import views.ListaClientiView;
 import views.ViewFactory;

@@ -6,6 +6,8 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import models.Albergo;
 import models.Itinerario;
+import models.Tappa;
+import models.Viaggio;
 
 public class ViewNavigator {
 
@@ -68,6 +70,28 @@ public class ViewNavigator {
     public static void displayAggiungiViaggioView() {
         ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiViaggioView().getRoot());
     }
+
+    public static void displayInfoViaggioView(Viaggio viaggio) {
+        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createInfoViaggioView(viaggio).getRoot());
+    }
+
+    public static void displayDisdiciPrenotazioneView() {
+        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createDisdiciPrenotazioneView().getRoot());
+    }
+
+    public static InfoViaggioListaAlberghiPerCittaView displayInfoViaggioListaAlberghiPerCittaView(Tappa citta) {
+        InfoViaggioListaAlberghiPerCittaView view = ViewFactory.createInfoViaggioListaAlberghiPerCittaView(citta);
+        ((StackPane)activeView.getRoot()).getChildren().add(view.getRoot());
+        return view;
+    }
+
+    public static AggiungiPrenotazioneView displayAggiungiPrenotazioneView(Viaggio viaggio) {
+        AggiungiPrenotazioneView view = ViewFactory.createAggiungiPrenotazioneView(viaggio);
+        ((StackPane)activeView.getRoot()).getChildren().add(view.getRoot());
+        return view;
+    }
+
+
 
     public static Stage getStage() {
         return stage;

@@ -1,7 +1,5 @@
 package views;
 
-import graphicscontrollers.AggiungiAutobusViewController;
-import graphicscontrollers.AggiungiViaggioItinerarioElementViewController;
 import graphicscontrollers.AggiungiViaggioViewController;
 import graphicscontrollers.GraphicsController;
 import javafx.fxml.FXML;
@@ -9,10 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import models.Itinerario;
 import utils.Utils;
 
 import java.util.List;

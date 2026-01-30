@@ -2,10 +2,8 @@ package graphicscontrollers;
 
 import appcontrollers.ItinerariesController;
 import appcontrollers.StopsController;
-import exception.DAOException;
-import exception.InvalidItineraryNameException;
 import exception.InvalidItineraryCostException;
-import exception.InvalidStopNameException;
+import exception.InvalidItineraryNameException;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import models.Tappa;

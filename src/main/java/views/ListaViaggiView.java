@@ -1,7 +1,6 @@
 package views;
 
 import graphicscontrollers.GraphicsController;
-import graphicscontrollers.ListaAlberghiViewController;
 import graphicscontrollers.ListaViaggiViewController;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

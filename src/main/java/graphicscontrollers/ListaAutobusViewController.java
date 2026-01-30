@@ -1,12 +1,13 @@
 package graphicscontrollers;
 
 import appcontrollers.AutobusController;
-import appcontrollers.HotelController;
 import exception.DAOException;
 import javafx.scene.Node;
-import models.Albergo;
 import models.Autobus;
-import views.*;
+import views.Icon;
+import views.ListaAutobusView;
+import views.ViewFactory;
+import views.ViewNavigator;
 
 import java.util.ArrayList;
 import java.util.List;

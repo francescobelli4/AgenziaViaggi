@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" styleClass="root" stylesheets="@../styles/InfoViaggio.css" visible="true" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="800.0" spacing="20.0" styleClass="container">
+         <padding>
+            <Insets bottom="25.0" left="30.0" right="30.0" top="25.0" />
+         </padding>
+         <children>
+            <VBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label text="Viaggio #" textFill="#18454a">
+                           <font><Font name="System Bold" size="24.0" /></font>
+                        </Label>
+                        <Label fx:id="codiceViaggioLabel" text="904oihfnj430hfj2po239lkfw" textFill="#18454a">
+                           <font><Font name="System Bold" size="24.0" /></font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label fx:id="nomeItinerarioLabel" text="NomeItinerario" textFill="#666666">
+                     <font><Font size="18.0" /></font>
+                  </Label>
+               </children>
+            </VBox>
+
+            <HBox alignment="CENTER" spacing="40.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10;">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label text="PARTENZA" textFill="#999999" />
+                        <Label fx:id="dataPartenzaLabel" text="--/--/----">
+                           <font><Font name="System Bold" size="16.0" /></font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label text="RITORNO" textFill="#999999" />
+                        <Label fx:id="dataRitornoLabel" text="--/--/----">
+                           <font><Font name="System Bold" size="16.0" /></font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <HBox fx:id="logisticsContainer" spacing="15.0">
+               <children>
+                  <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Tappe dell'itinerario" textFill="#18454a">
+                           <font><Font name="System Bold" size="14.0" /></font>
+                        </Label>
+                        <ScrollPane fitToWidth="true" prefHeight="150.0">
+                           <content>
+                              <VBox fx:id="tappeContainer" spacing="8.0">
+                                 <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Autobus Assegnati" textFill="#18454a">
+                           <font><Font name="System Bold" size="14.0" /></font>
+                        </Label>
+                        <ScrollPane fitToWidth="true" prefHeight="150.0">
+                           <content>
+                              <VBox fx:id="listaAutobusContainer" spacing="8.0">
+                                 <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <VBox spacing="5.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="15.0">
+                     <children>
+                        <Label fx:id="prenotatiLabel" text="Prenotati" textFill="#18454a">
+                           <font><Font name="System Bold" size="14.0" /></font>
+                        </Label>
+                        <Button fx:id="aggiungiPrenotatiButton" mnemonicParsing="false">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icons/more.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <ScrollPane fitToWidth="true" prefHeight="200.0">
+                     <content>
+                        <VBox fx:id="listaPrenotatiContainer" spacing="10.0">
+                           <padding><Insets bottom="10.0" left="10.0" right="10.0" top="10.0" /></padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+
+            <Button fx:id="confermaButton" mnemonicParsing="false" styleClass="conferma" text="Salva" textFill="WHITE">
+               <font><Font name="System Bold" size="18.0" /></font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

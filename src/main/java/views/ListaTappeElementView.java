@@ -20,8 +20,6 @@ public class ListaTappeElementView implements View {
     @FXML
     private Label stopLabel;
     @FXML
-    private Button stopActionButton;
-    @FXML
     private Button deleteButton;
 
     private static final Page page = Page.LISTA_TAPPE_ELEMENT;
@@ -43,10 +41,6 @@ public class ListaTappeElementView implements View {
 
     public Label getStopLabel() {
         return stopLabel;
-    }
-
-    public Button getStopActionButton() {
-        return stopActionButton;
     }
 
     public Button getDeleteButton() {

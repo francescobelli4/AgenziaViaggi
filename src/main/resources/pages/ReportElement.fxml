@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="root" alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 8;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+   <children>
+      <VBox minWidth="200.0">
+         <children>
+            <Label fx:id="codiceLabel" text="CodiceViaggio" textFill="#18454a">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="itinerarioLabel" text="Itinerario" textFill="#666666" />
+         </children>
+      </VBox>
+      <Pane HBox.hgrow="ALWAYS" />
+      <Label fx:id="entrateLabel" minWidth="100.0" text="€ 10000" textFill="#27ae60">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="usciteLabel" minWidth="100.0" text="€ 8000" textFill="#c0392b">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="guadagnoLabel" minWidth="120.0" text="+ € 2000" textFill="#27ae60">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</HBox>

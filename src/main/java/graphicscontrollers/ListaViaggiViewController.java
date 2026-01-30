@@ -1,12 +1,15 @@
 package graphicscontrollers;
 
-import appcontrollers.HotelController;
 import appcontrollers.ToursController;
 import exception.DAOException;
 import javafx.scene.Node;
-import models.Albergo;
+import models.Role;
+import models.User;
 import models.Viaggio;
-import views.*;
+import views.Icon;
+import views.ListaViaggiView;
+import views.ViewFactory;
+import views.ViewNavigator;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -25,8 +28,12 @@ public class ListaViaggiViewController extends GraphicsController<ListaViaggiVie
     @Override
     public void loaded() {
 
-        getView().getAddButton().setOnMouseClicked(_ -> addButtonClicked());
+        if (User.getInstance().getRole() == Role.BOOKING) {
+            getView().getAddButton().setVisible(false);
+            getView().getAddButton().setManaged(false);
+        }
 
+        getView().getAddButton().setOnMouseClicked(_ -> addButtonClicked());
         updateLists();
     }
 

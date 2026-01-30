@@ -1,7 +1,6 @@
 package daos;
 
 import app.AppContext;
-import dtos.AutobusDTO;
 import exception.DAOException;
 
 import java.sql.CallableStatement;

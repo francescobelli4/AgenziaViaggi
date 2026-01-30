@@ -22,15 +22,6 @@
          </font>
       </Label>
       <Pane HBox.hgrow="ALWAYS" />
-      <Button fx:id="stopActionButton" mnemonicParsing="false">
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../icons/hotel.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button fx:id="deleteButton" mnemonicParsing="false">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">

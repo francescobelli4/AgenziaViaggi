@@ -1,15 +1,11 @@
 package views;
 
 import graphicscontrollers.GraphicsController;
-import graphicscontrollers.ListaTappeElementViewController;
 import graphicscontrollers.ListaViaggiElementViewController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import models.Tappa;
 import models.Viaggio;
 import utils.Utils;
 
@@ -25,8 +21,6 @@ public class ListaViaggiElementView implements View {
     private Label partenzaLabel;
     @FXML
     private Label ritornoLabel;
-    @FXML
-    private Button deleteButton;
 
     private static final Page page = Page.LISTA_VIAGGI_ELEMENT;
     private final GraphicsController<ListaViaggiElementView> graphicsController;
@@ -55,10 +49,6 @@ public class ListaViaggiElementView implements View {
 
     public Label getRitornoLabel() {
         return ritornoLabel;
-    }
-
-    public Button getDeleteButton() {
-        return deleteButton;
     }
 
     @Override

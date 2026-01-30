@@ -1,11 +1,7 @@
 package graphicscontrollers;
 
 import appcontrollers.AutobusController;
-import appcontrollers.HotelController;
-import dtos.AlbergoDTO;
-import exception.DAOException;
 import exception.InvalidAutobusDataException;
-import exception.InvalidHotelDataException;
 import javafx.scene.layout.StackPane;
 import views.*;
 

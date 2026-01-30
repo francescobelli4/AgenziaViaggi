@@ -2,15 +2,12 @@ package views;
 
 import graphicscontrollers.GraphicsController;
 import graphicscontrollers.ListaItinerariElementViewController;
-import graphicscontrollers.ListaTappeElementViewController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import models.Itinerario;
-import models.Tappa;
 import utils.Utils;
 
 public class ListaItinerariElementView implements View {

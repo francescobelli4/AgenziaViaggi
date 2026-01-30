@@ -1,11 +1,9 @@
 package graphicscontrollers;
 
-import appcontrollers.ItinerariesController;
-import exception.DAOException;
 import javafx.scene.image.Image;
-import models.Itinerario;
 import models.Tappa;
-import views.*;
+import views.AggiungiItinerarioTappaElementView;
+import views.Icon;
 
 import java.util.Objects;
 

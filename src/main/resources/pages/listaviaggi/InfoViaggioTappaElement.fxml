@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="root" alignment="CENTER_LEFT" spacing="15.0" styleClass="tappa-item" stylesheets="@../styles/InfoViaggioTappaElement.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="iconImageView" fitHeight="41.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/city.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="stopLabel" text="NomeTappa">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Pane HBox.hgrow="ALWAYS" />
+   </children>
+   <padding>
+      <Insets left="10.0" right="10.0" />
+   </padding>
+</HBox>

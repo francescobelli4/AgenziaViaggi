@@ -1,14 +1,11 @@
 package views;
 
 import graphicscontrollers.GraphicsController;
-import graphicscontrollers.ListaAutobusElementViewController;
 import graphicscontrollers.ListaClientiElementViewController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import models.Autobus;
 import models.Cliente;
 import utils.Utils;
 

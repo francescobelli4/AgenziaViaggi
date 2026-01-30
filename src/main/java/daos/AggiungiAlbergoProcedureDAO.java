@@ -2,7 +2,6 @@ package daos;
 
 import app.AppContext;
 import dtos.AlbergoDTO;
-import dtos.ItinerarioDTO;
 import exception.DAOException;
 
 import java.sql.CallableStatement;

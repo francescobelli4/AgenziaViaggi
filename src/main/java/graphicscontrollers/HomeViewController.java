@@ -1,5 +1,7 @@
 package graphicscontrollers;
 
+import models.Role;
+import models.User;
 import views.*;
 
 public class HomeViewController extends GraphicsController<HomeView> {
@@ -11,12 +13,37 @@ public class HomeViewController extends GraphicsController<HomeView> {
 
     @Override
     public void loaded() {
-        getView().getListaTappeButton().setOnMouseClicked(_ -> listaTappeButtonClicked());
+
         getView().getListaItinerariButton().setOnMouseClicked(_ -> listaItinerariButtonClicked());
-        getView().getListaAlberghiButton().setOnMouseClicked(_ -> listaAlberghiButtonClicked());
-        getView().getListaAutobusButton().setOnMouseClicked(_ -> listaAutobusButtonClicked());
-        getView().getListaClientiButton().setOnMouseClicked(_ -> listaClientiButtonClicked());
         getView().getListaViaggiButton().setOnMouseClicked(_ -> listaViaggiButtonClicked());
+
+        if (User.getInstance().getRole() == Role.BOOKING) {
+            getView().getLogistics().setManaged(false);
+            getView().getLogistics().setVisible(false);
+            getView().getListaTappeButton().setManaged(false);
+            getView().getListaTappeButton().setVisible(false);
+
+            getView().getListaClientiButton().setOnMouseClicked(_ -> listaClientiButtonClicked());
+            getView().getDisdiciPrenotazioneButton().setOnMouseClicked(_ -> disdiciPrenotazioneButton());
+        } else {
+            getView().getCustomers().setManaged(false);
+            getView().getCustomers().setVisible(false);
+
+            getView().getListaTappeButton().setOnMouseClicked(_ -> listaTappeButtonClicked());
+            getView().getListaAlberghiButton().setOnMouseClicked(_ -> listaAlberghiButtonClicked());
+            getView().getListaAutobusButton().setOnMouseClicked(_ -> listaAutobusButtonClicked());
+            getView().getReportsButton().setOnMouseClicked(_ -> reportsButtonClicked());
+        }
+    }
+
+    private void disdiciPrenotazioneButton() {
+        ViewNavigator.displayDisdiciPrenotazioneView();
+    }
+
+    private void reportsButtonClicked() {
+        ReportsView reportsView = ViewFactory.createReportsView();
+        getView().setActiveView(reportsView);
+        getView().appendMainElement(reportsView.getRoot());
     }
 
     private void listaTappeButtonClicked() {

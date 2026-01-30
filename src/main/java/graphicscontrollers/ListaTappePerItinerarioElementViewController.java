@@ -1,13 +1,9 @@
 package graphicscontrollers;
 
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
-import models.Itinerario;
 import models.Tappa;
 import views.Icon;
 import views.ListaTappePerItinerarioElementView;
-import views.ListaTappePerItinerarioView;
-import views.ViewNavigator;
 
 import java.util.Objects;
 
