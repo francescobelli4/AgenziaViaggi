@@ -2,6 +2,7 @@ package graphicscontrollers;
 
 import appcontrollers.ItinerariesController;
 import appcontrollers.StopsController;
+import exception.DAOException;
 import exception.InvalidItineraryCostException;
 import exception.InvalidItineraryNameException;
 import javafx.scene.Node;
@@ -84,6 +85,8 @@ public class AggiungiItinerarioViewController extends GraphicsController<Aggiung
             ViewNavigator.displayNotification("Errore", "Nome itinerario non valido.", Icon.APPICON);
         } catch (InvalidItineraryCostException _) {
             ViewNavigator.displayNotification("Errore", "Costo itinerario non valido.", Icon.APPICON);
+        } catch (DAOException e) {
+            ViewNavigator.displayNotification("Errore", e.getMessage(), Icon.APPICON);
         }
     }
 }
