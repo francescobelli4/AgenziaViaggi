@@ -9,8 +9,7 @@ import javafx.scene.layout.StackPane;
 import models.Tappa;
 import views.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class AggiungiItinerarioViewController extends GraphicsController<AggiungiItinerarioView> {
 
@@ -50,18 +49,33 @@ public class AggiungiItinerarioViewController extends GraphicsController<Aggiung
             return;
         }
 
-        List<Tappa> tappe = new ArrayList<>();
+        Map<Integer, Tappa> tappeSortedTree = new TreeMap<>();
 
         for (AggiungiItinerarioTappaElementView v : tappeViews) {
 
             if (v.getTappaCheckbox().isSelected()) {
+
+                int ordine;
+
+                try {
+                    ordine = Integer.parseInt(v.getOrdineTF().getText());
+                } catch (NumberFormatException _) {
+                    ViewNavigator.displayNotification("Errore", "Una delle tappe ha un numero di ordine non valido. (da 0 a N)", Icon.APPICON);
+                    return;
+                }
+
+                if (ordine < 0 || tappeSortedTree.containsKey(ordine)) {
+                    ViewNavigator.displayNotification("Errore", "Una delle tappe ha un numero di ordine non valido. (da 0 a N)", Icon.APPICON);
+                    return;
+                }
+
                 AggiungiItinerarioTappaElementViewController controller = (AggiungiItinerarioTappaElementViewController) v.getGraphicsController();
-                tappe.add(controller.getTappa());
+                tappeSortedTree.put(ordine, controller.getTappa());
             }
         }
 
         try {
-            ItinerariesController.aggiungiItinerario(getView().getNomeTextField().getText(), costo, tappe);
+            ItinerariesController.aggiungiItinerario(getView().getNomeTextField().getText(), costo, new ArrayList<>(tappeSortedTree.values()));
 
             ListaItinerariView listaItinerari = (ListaItinerariView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
             ((ListaItinerariViewController)listaItinerari.getGraphicsController()).updateLists();

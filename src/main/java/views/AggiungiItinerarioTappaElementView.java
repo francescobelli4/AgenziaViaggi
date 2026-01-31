@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import models.Tappa;
@@ -22,6 +23,8 @@ public class AggiungiItinerarioTappaElementView implements View {
     private ImageView tappaIcon;
     @FXML
     private CheckBox tappaCheckbox;
+    @FXML
+    private TextField ordineTF;
 
     private static final Page page = Page.AGGIUNGI_ITINERARIO_ELEMENT;
     private final GraphicsController<AggiungiItinerarioTappaElementView> graphicsController;
@@ -46,6 +49,10 @@ public class AggiungiItinerarioTappaElementView implements View {
 
     public Label getTappaLabel() {
         return tappaLabel;
+    }
+
+    public TextField getOrdineTF() {
+        return ordineTF;
     }
 
     @Override
