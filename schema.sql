@@ -810,7 +810,6 @@ INSERT INTO `referente` (`CF`, `Nome`, `Cognome`) VALUES
                                                       ('BCKGNN78D04H501F', 'Gianni', 'Bianchi'),
                                                       ('BNCGNN85B02F205Z', 'Giovanni', 'Bianchi'),
                                                       ('COLMRA72E05F205G', 'Marco', 'Colombo'),
-                                                      ('dsdasd', 'asdasda', 'dsadadasd'),
                                                       ('ESPLGI92C03L219E', 'Luigi', 'Esposito'),
                                                       ('FERSRA88B02F205D', 'Sara', 'Ferrari'),
                                                       ('GLLFNC75D04H501Q', 'Francesco', 'Gialli'),
