@@ -37,7 +37,6 @@ public class AggiungiPrenotazioneViewController extends GraphicsController<Aggiu
     }
 
     private void rootClicked() {
-        //((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
         ViewNavigator.closeCurrentFloatingPage();
     }
 
