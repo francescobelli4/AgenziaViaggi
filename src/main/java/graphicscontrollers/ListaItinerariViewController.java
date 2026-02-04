@@ -6,10 +6,7 @@ import javafx.scene.Node;
 import models.Itinerario;
 import models.Role;
 import models.User;
-import views.Icon;
-import views.ListaItinerariView;
-import views.ViewFactory;
-import views.ViewNavigator;
+import views.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,19 +28,32 @@ public class ListaItinerariViewController extends GraphicsController<ListaItiner
             getView().getAddButton().setManaged(false);
         }
 
-        getView().getAddButton().setOnMouseClicked(_ -> addButtonClicked());
+        itinerari = ItinerariesController.getItinerari();
+        updateLists();
 
+        getView().getAddButton().setOnMouseClicked(_ -> addButtonClicked());
+    }
+
+    private void rimuoviItinerario(Itinerario itinerario) {
+        itinerari.remove(itinerario);
+        updateLists();
+    }
+
+    private void aggiungiItinerario(Itinerario itinerario) {
+        itinerari.add(itinerario);
         updateLists();
     }
 
     public void updateLists() {
 
         try {
-            itinerari = ItinerariesController.getItinerari();
 
             List<Node> itinerariNodes = new ArrayList<>();
             for (Itinerario i : itinerari) {
-                itinerariNodes.add(ViewFactory.createListaItinerariElementView(i).getRoot());
+                ListaItinerariElementView listaItinerariElementView = ViewFactory.createListaItinerariElementView(i);
+                ListaItinerariElementViewController listaItinerariElementViewController = (ListaItinerariElementViewController) listaItinerariElementView.getGraphicsController();
+                listaItinerariElementViewController.setOnDeleted(this::rimuoviItinerario);
+                itinerariNodes.add(listaItinerariElementView.getRoot());
             }
 
             getView().update(itinerariNodes);
@@ -53,6 +63,8 @@ public class ListaItinerariViewController extends GraphicsController<ListaItiner
     }
 
     private void addButtonClicked() {
-        ViewNavigator.displayAggiungiItinerarioView();
+        AggiungiItinerarioView aggiungiItinerarioView = ViewNavigator.displayAggiungiItinerarioView();
+        AggiungiItinerarioViewController aggiungiItinerarioViewController = (AggiungiItinerarioViewController) aggiungiItinerarioView.getGraphicsController();
+        aggiungiItinerarioViewController.setOnSuccess(this::aggiungiItinerario);
     }
 }

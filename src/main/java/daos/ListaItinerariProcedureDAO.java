@@ -29,7 +29,6 @@ public class ListaItinerariProcedureDAO implements GenericProcedureDAO<Void, Lis
             String nome = rs.getString("Nome");
             int costo = rs.getInt("Costo");
 
-            System.out.println(nome + "    " + costo);
             itineraries.add(new Itinerario(nome, costo));
         }
 

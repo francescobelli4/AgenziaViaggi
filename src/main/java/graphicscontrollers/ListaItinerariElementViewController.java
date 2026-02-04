@@ -5,8 +5,11 @@ import exception.DAOException;
 import models.Itinerario;
 import views.*;
 
+import java.util.function.Consumer;
+
 public class ListaItinerariElementViewController extends GraphicsController<ListaItinerariElementView> {
 
+    private Consumer<Itinerario> onDeleted;
     private final Itinerario itinerario;
 
     public ListaItinerariElementViewController(ListaItinerariElementView view, Itinerario itinerario) {
@@ -24,6 +27,10 @@ public class ListaItinerariElementViewController extends GraphicsController<List
         getView().getRoot().setOnMouseClicked(_ -> elementClicked());
     }
 
+    public void setOnDeleted(Consumer<Itinerario> onDeleted) {
+        this.onDeleted = onDeleted;
+    }
+
     private void elementClicked() {
         ViewNavigator.displayListaTappePerItinerarioView(itinerario);
     }
@@ -32,8 +39,7 @@ public class ListaItinerariElementViewController extends GraphicsController<List
         try {
             ItinerariesController.eliminaItinerario(itinerario);
 
-            ListaItinerariView listaItinerari = (ListaItinerariView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaItinerariViewController)listaItinerari.getGraphicsController()).updateLists();
+            if (onDeleted != null) onDeleted.accept(itinerario);
         } catch (DAOException e) {
             ViewNavigator.displayNotification("Errore", e.getMessage(), Icon.APPICON);
         }

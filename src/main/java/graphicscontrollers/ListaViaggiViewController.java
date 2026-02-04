@@ -6,10 +6,7 @@ import javafx.scene.Node;
 import models.Role;
 import models.User;
 import models.Viaggio;
-import views.Icon;
-import views.ListaViaggiView;
-import views.ViewFactory;
-import views.ViewNavigator;
+import views.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -33,14 +30,20 @@ public class ListaViaggiViewController extends GraphicsController<ListaViaggiVie
             getView().getAddButton().setManaged(false);
         }
 
+        viaggi = ToursController.getTours();
+        updateLists();
+
         getView().getAddButton().setOnMouseClicked(_ -> addButtonClicked());
+    }
+
+    private void aggiungiViaggio(Viaggio viaggio) {
+        this.viaggi.add(viaggio);
         updateLists();
     }
 
     public void updateLists() {
 
         try {
-            viaggi = ToursController.getTours();
 
             List<Node> pastToursNodes = new ArrayList<>();
             List<Node> futureToursNodes = new ArrayList<>();
@@ -61,6 +64,8 @@ public class ListaViaggiViewController extends GraphicsController<ListaViaggiVie
     }
 
     private void addButtonClicked() {
-        ViewNavigator.displayAggiungiViaggioView();
+        AggiungiViaggioView aggiungiViaggioView = ViewNavigator.displayAggiungiViaggioView();
+        AggiungiViaggioViewController aggiungiViaggioViewController = (AggiungiViaggioViewController) aggiungiViaggioView.getGraphicsController();
+        aggiungiViaggioViewController.setOnSuccess(this::aggiungiViaggio);
     }
 }

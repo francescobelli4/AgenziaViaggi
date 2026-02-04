@@ -7,13 +7,16 @@ import exception.InvalidItineraryCostException;
 import exception.InvalidItineraryNameException;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
+import models.Itinerario;
 import models.Tappa;
 import views.*;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 public class AggiungiItinerarioViewController extends GraphicsController<AggiungiItinerarioView> {
 
+    Consumer<Itinerario> onSuccess;
     private final List<AggiungiItinerarioTappaElementView> tappeViews = new ArrayList<>();
 
     public AggiungiItinerarioViewController(AggiungiItinerarioView view) {
@@ -34,8 +37,12 @@ public class AggiungiItinerarioViewController extends GraphicsController<Aggiung
         getView().setElements(tappe);
     }
 
+    public void setOnSuccess(Consumer<Itinerario> onSuccess) {
+        this.onSuccess = onSuccess;
+    }
+
     private void rootClicked() {
-        ((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        ViewNavigator.closeCurrentFloatingPage();
     }
 
 
@@ -76,11 +83,10 @@ public class AggiungiItinerarioViewController extends GraphicsController<Aggiung
         }
 
         try {
-            ItinerariesController.aggiungiItinerario(getView().getNomeTextField().getText(), costo, new ArrayList<>(tappeSortedTree.values()));
+            Itinerario i = ItinerariesController.aggiungiItinerario(getView().getNomeTextField().getText(), costo, new ArrayList<>(tappeSortedTree.values()));
 
-            ListaItinerariView listaItinerari = (ListaItinerariView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaItinerariViewController)listaItinerari.getGraphicsController()).updateLists();
-            rootClicked();
+            if (onSuccess != null) onSuccess.accept(i);
+            ViewNavigator.closeCurrentFloatingPage();
         } catch (InvalidItineraryNameException _) {
             ViewNavigator.displayNotification("Errore", "Nome itinerario non valido.", Icon.APPICON);
         } catch (InvalidItineraryCostException _) {

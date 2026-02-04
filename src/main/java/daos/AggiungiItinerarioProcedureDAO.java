@@ -3,15 +3,20 @@ package daos;
 import app.AppContext;
 import dtos.ItinerarioDTO;
 import exception.DAOException;
+import models.Itinerario;
+import models.Tappa;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AggiungiItinerarioProcedureDAO implements GenericProcedureDAO<ItinerarioDTO, Void> {
+public class AggiungiItinerarioProcedureDAO implements GenericProcedureDAO<ItinerarioDTO, Itinerario> {
 
     @Override
-    public Void execute(ItinerarioDTO input) throws DAOException, SQLException {
+    public Itinerario execute(ItinerarioDTO input) throws DAOException, SQLException {
+
+        Itinerario i = null;
 
         Connection conn = AppContext.getActiveConnection();
 
@@ -20,11 +25,27 @@ public class AggiungiItinerarioProcedureDAO implements GenericProcedureDAO<Itine
         cs.setString(1, input.name());
         cs.setInt(2, input.costo());
         cs.setString(3, input.tappe());
-        cs.executeQuery();
+
+        boolean resultSetFound = cs.execute();
+
+        while (!resultSetFound && cs.getUpdateCount() != -1) {
+            resultSetFound = cs.getMoreResults();
+        }
+
+        if (resultSetFound) {
+            try (ResultSet rs = cs.getResultSet()) {
+                if (rs.next()) {
+                    String nome = rs.getString("Nome");
+                    int costo = rs.getInt("Costo");
+
+                    i = new Itinerario(nome, costo);
+                }
+            }
+        }
 
         conn.commit();
         cs.close();
 
-        return null;
+        return i;
     }
 }

@@ -21,7 +21,8 @@ public class DisdiciPrenotazioneViewController extends GraphicsController<Disdic
     }
 
     private void rootClicked() {
-        ((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        //((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        ViewNavigator.closeCurrentFloatingPage();
     }
 
     private void disdiciButtonClicked() {

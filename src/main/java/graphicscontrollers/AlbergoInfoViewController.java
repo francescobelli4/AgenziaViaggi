@@ -31,6 +31,7 @@ public class AlbergoInfoViewController extends GraphicsController<AlbergoInfoVie
     }
 
     private void rootClicked() {
-        ((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        //((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        ViewNavigator.closeCurrentFloatingPage();
     }
 }

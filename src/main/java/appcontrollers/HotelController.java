@@ -39,7 +39,7 @@ public class HotelController {
         }
     }
 
-    public static void aggiungiAlbergo(AlbergoDTO albergo) throws DAOException, InvalidHotelDataException {
+    public static Albergo aggiungiAlbergo(AlbergoDTO albergo) throws DAOException, InvalidHotelDataException {
 
         if (albergo.costo() <= 0) {
             throw new InvalidHotelDataException("Costo non valido.");
@@ -86,7 +86,7 @@ public class HotelController {
         }
 
         try {
-            new AggiungiAlbergoProcedureDAO().execute(albergo);
+            return new AggiungiAlbergoProcedureDAO().execute(albergo);
         } catch (SQLException e) {
             throw new DAOException(e);
         }

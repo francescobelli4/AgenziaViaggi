@@ -7,9 +7,11 @@ import models.Tappa;
 import views.*;
 
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class ListaTappeElementViewController extends GraphicsController<ListaTappeElementView> {
 
+    Consumer<Tappa> onDeleted;
     private final Tappa tappa;
 
     public ListaTappeElementViewController(ListaTappeElementView view, Tappa tappa) {
@@ -34,13 +36,15 @@ public class ListaTappeElementViewController extends GraphicsController<ListaTap
         getView().getDeleteButton().setOnMouseClicked(_ -> deleteButtonClicked());
     }
 
+    public void setOnDeleted(Consumer<Tappa> onDeleted) {
+        this.onDeleted = onDeleted;
+    }
+
     private void deleteButtonClicked() {
 
         try {
             StopsController.eliminaTappa(tappa);
-
-            ListaTappeView listaTappe = (ListaTappeView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaTappeViewController)listaTappe.getGraphicsController()).updateLists();
+            if (onDeleted != null) onDeleted.accept(tappa);
         } catch (DAOException e) {
             ViewNavigator.displayNotification("Errore", e.getMessage(), Icon.APPICON);
         }

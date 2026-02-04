@@ -4,14 +4,13 @@ import appcontrollers.StopsController;
 import exception.DAOException;
 import javafx.scene.Node;
 import models.Tappa;
-import views.Icon;
-import views.ListaTappeView;
-import views.ViewFactory;
-import views.ViewNavigator;
+import views.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static views.ViewNavigator.displayAggiungiTappaView;
 
 public class ListaTappeViewController extends GraphicsController<ListaTappeView> {
 
@@ -28,21 +27,36 @@ public class ListaTappeViewController extends GraphicsController<ListaTappeView>
         getView().getAddCittaButton().setOnMouseClicked(_ -> addTappaButtonClicked());
         getView().getAddTappaButton().setOnMouseClicked(_ -> addTappaButtonClicked());
 
+        tappe = StopsController.getTappe();
         updateLists();
     }
 
     private void addTappaButtonClicked() {
-        ViewNavigator.displayAggiungiTappaView();
+        AggiungiTappaView aggiungiTappaView = ViewNavigator.displayAggiungiTappaView();
+        AggiungiTappaViewController aggiungiTappaViewController = (AggiungiTappaViewController) aggiungiTappaView.getGraphicsController();
+        aggiungiTappaViewController.setOnSuccess(this::aggiungiTappa);
+    }
+
+    private void aggiungiTappa(Tappa tappa) {
+        tappe.add(tappa);
+        updateLists();
+    }
+
+    private void rimuoviTappa(Tappa tappa) {
+        tappe.remove(tappa);
+        updateLists();
     }
 
     public void updateLists() {
         try {
-            tappe = StopsController.getTappe();
-
             Map<Node, Tappa.Tipo> nodes = new HashMap<>();
 
             for (Tappa t : tappe) {
-                nodes.put(ViewFactory.createListaTappeElementView(t).getRoot(), t.getTipo());
+                ListaTappeElementView listaTappeElementView = ViewFactory.createListaTappeElementView(t);
+                ListaTappeElementViewController listaTappeElementViewController = (ListaTappeElementViewController) listaTappeElementView.getGraphicsController();
+                listaTappeElementViewController.setOnDeleted(this::rimuoviTappa);
+
+                nodes.put(listaTappeElementView.getRoot(), t.getTipo());
             }
 
             getView().update(nodes);

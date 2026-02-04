@@ -24,7 +24,7 @@ public class ToursController {
         }
     }
 
-    public static void aggiungiViaggio(Itinerario itinerario, LocalDate partenza, LocalDate ritorno) throws DAOException, InvalidTourDataException {
+    public static Viaggio aggiungiViaggio(Itinerario itinerario, LocalDate partenza, LocalDate ritorno) throws DAOException, InvalidTourDataException {
 
         if (ChronoUnit.DAYS.between(LocalDate.now(), partenza) <= 0) {
             throw new InvalidTourDataException("Hai inserito una data di partenza non valida.");
@@ -39,7 +39,7 @@ public class ToursController {
         }
 
         try {
-            new AggiungiViaggioProcedureDAO().execute(new ViaggioDTO(itinerario.getNome(), partenza, ritorno));
+            return new AggiungiViaggioProcedureDAO().execute(new ViaggioDTO(itinerario.getNome(), partenza, ritorno));
         } catch (SQLException e) {
             throw new DAOException(e);
         }

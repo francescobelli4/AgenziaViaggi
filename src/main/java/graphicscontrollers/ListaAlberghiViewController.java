@@ -4,10 +4,7 @@ import appcontrollers.HotelController;
 import exception.DAOException;
 import javafx.scene.Node;
 import models.Albergo;
-import views.Icon;
-import views.ListaAlberghiView;
-import views.ViewFactory;
-import views.ViewNavigator;
+import views.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +23,31 @@ public class ListaAlberghiViewController extends GraphicsController<ListaAlbergh
 
         getView().getAddButton().setOnMouseClicked(_ -> addButtonClicked());
 
+        alberghi = HotelController.getAlberghi();
+
+        updateLists();
+    }
+
+    private void aggiungiAlbergo(Albergo albergo) {
+        this.alberghi.add(albergo);
+        updateLists();
+    }
+
+    private void rimuoviAlbergo(Albergo albergo) {
+        this.alberghi.remove(albergo);
         updateLists();
     }
 
     public void updateLists() {
 
         try {
-            alberghi = HotelController.getAlberghi();
-
             List<Node> alberghiNodes = new ArrayList<>();
             for (Albergo i : alberghi) {
-                alberghiNodes.add(ViewFactory.createListaAlberghiElementView(i).getRoot());
+                ListaAlberghiElementView listaAlberghiElementView = ViewFactory.createListaAlberghiElementView(i);
+                ListaAlberghiElementViewController listaAlberghiElementViewController = (ListaAlberghiElementViewController) listaAlberghiElementView.getGraphicsController();
+                listaAlberghiElementViewController.setOnDeleted(this::rimuoviAlbergo);
+
+                alberghiNodes.add(listaAlberghiElementView.getRoot());
             }
 
             getView().update(alberghiNodes);
@@ -46,6 +57,8 @@ public class ListaAlberghiViewController extends GraphicsController<ListaAlbergh
     }
 
     private void addButtonClicked() {
-        ViewNavigator.displayAggiungiAlbergoView();
+        AggiungiAlbergoView aggiungiAlbergoView = ViewNavigator.displayAggiungiAlbergoView();
+        AggiungiAlbergoViewController aggiungiAlbergoViewController = (AggiungiAlbergoViewController) aggiungiAlbergoView.getGraphicsController();
+        aggiungiAlbergoViewController.setOnSuccess(this::aggiungiAlbergo);
     }
 }

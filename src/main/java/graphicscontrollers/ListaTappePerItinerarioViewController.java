@@ -36,7 +36,8 @@ public class ListaTappePerItinerarioViewController extends GraphicsController<Li
     }
 
     private void rootClicked() {
-        ((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        //((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        ViewNavigator.closeCurrentFloatingPage();
     }
 
     public Itinerario getItinerario() {

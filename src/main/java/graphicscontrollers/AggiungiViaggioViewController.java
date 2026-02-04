@@ -7,13 +7,16 @@ import exception.InvalidTourDataException;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 import models.Itinerario;
+import models.Viaggio;
 import views.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class AggiungiViaggioViewController extends GraphicsController<AggiungiViaggioView> implements AggiungiViaggioItinerarioElementViewController.Listener {
 
+    private Consumer<Viaggio> onSuccess;
     private Itinerario selectedItinerary;
 
     public AggiungiViaggioViewController(AggiungiViaggioView view) {
@@ -29,6 +32,10 @@ public class AggiungiViaggioViewController extends GraphicsController<AggiungiVi
         updateLists();
     }
 
+    public void setOnSuccess(Consumer<Viaggio> onSuccess) {
+        this.onSuccess = onSuccess;
+    }
+
     private void aggiungiButtonClicked() {
 
         if (getView().getPartenzaDatePicker().getValue() == null || getView().getRitornoDatePicker().getValue() == null) {
@@ -42,10 +49,10 @@ public class AggiungiViaggioViewController extends GraphicsController<AggiungiVi
         }
 
         try {
-            ToursController.aggiungiViaggio(selectedItinerary, getView().getPartenzaDatePicker().getValue(), getView().getRitornoDatePicker().getValue());
-            ListaViaggiView listaViaggi = (ListaViaggiView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaViaggiViewController)listaViaggi.getGraphicsController()).updateLists();
-            rootClicked();
+            Viaggio viaggio = ToursController.aggiungiViaggio(selectedItinerary, getView().getPartenzaDatePicker().getValue(), getView().getRitornoDatePicker().getValue());
+
+            if (onSuccess != null) onSuccess.accept(viaggio);
+            ViewNavigator.closeCurrentFloatingPage();
         } catch (InvalidTourDataException e) {
             ViewNavigator.displayNotification("Errore", e.getMessage(), Icon.APPICON);
         }
@@ -70,7 +77,7 @@ public class AggiungiViaggioViewController extends GraphicsController<AggiungiVi
     }
 
     private void rootClicked() {
-        ((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        ViewNavigator.closeCurrentFloatingPage();
     }
 
     @Override

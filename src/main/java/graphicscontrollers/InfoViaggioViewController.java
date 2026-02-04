@@ -121,7 +121,7 @@ public class InfoViaggioViewController extends GraphicsController<InfoViaggioVie
     }
 
     private void rootClicked() {
-        ((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        ViewNavigator.closeCurrentFloatingPage();
     }
 
     private void confermaButtonClicked() {

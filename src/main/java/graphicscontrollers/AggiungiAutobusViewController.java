@@ -3,9 +3,14 @@ package graphicscontrollers;
 import appcontrollers.AutobusController;
 import exception.InvalidAutobusDataException;
 import javafx.scene.layout.StackPane;
+import models.Autobus;
 import views.*;
 
+import java.util.function.Consumer;
+
 public class AggiungiAutobusViewController extends GraphicsController<AggiungiAutobusView> {
+
+    private Consumer<Autobus> onSuccess;
 
     public AggiungiAutobusViewController(AggiungiAutobusView view) {
         super(view);
@@ -18,8 +23,12 @@ public class AggiungiAutobusViewController extends GraphicsController<AggiungiAu
         getView().getAggiungiButton().setOnMouseClicked(_ -> aggiungiButtonClicked());
     }
 
+    public void setOnSuccess(Consumer<Autobus> onSuccess) {
+        this.onSuccess = onSuccess;
+    }
+
     private void rootClicked() {
-        ((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        ViewNavigator.closeCurrentFloatingPage();
     }
 
     private void aggiungiButtonClicked() {
@@ -42,11 +51,10 @@ public class AggiungiAutobusViewController extends GraphicsController<AggiungiAu
         }
 
         try {
-            AutobusController.aggiungiAutobus(getView().getTargaTF().getText(), capienza, costo);
+            Autobus autobus = AutobusController.aggiungiAutobus(getView().getTargaTF().getText(), capienza, costo);
 
-            ListaAutobusView listaAutobus = (ListaAutobusView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaAutobusViewController)listaAutobus.getGraphicsController()).updateLists();
-            rootClicked();
+            if (onSuccess != null) onSuccess.accept(autobus);
+            ViewNavigator.closeCurrentFloatingPage();
         } catch (InvalidAutobusDataException e) {
             ViewNavigator.displayNotification("Errore", e.getMessage(), Icon.APPICON);
         }

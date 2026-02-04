@@ -1,5 +1,6 @@
 package views;
 
+import graphicscontrollers.AggiungiTappaViewController;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
@@ -24,6 +25,10 @@ public class ViewNavigator {
         stage.setScene(scene);
     }
 
+    public static void closeCurrentFloatingPage() {
+        ((StackPane)activeView.getRoot()).getChildren().removeLast();
+    }
+
     public static void displayLoginView() {
         activeView = ViewFactory.createLoginView();
         scene.setRoot(activeView.getRoot());
@@ -43,32 +48,42 @@ public class ViewNavigator {
         scene.setRoot(activeView.getRoot());
     }
 
-    public static void displayAggiungiTappaView() {
-        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiTappaView().getRoot());
+    public static AggiungiTappaView displayAggiungiTappaView() {
+        AggiungiTappaView aggiungiTappaView = ViewFactory.createAggiungiTappaView();
+        ((StackPane)activeView.getRoot()).getChildren().add(aggiungiTappaView.getRoot());
+        return aggiungiTappaView;
     }
 
     public static void displayListaTappePerItinerarioView(Itinerario itinerario) {
         ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createListaTappePerItinerarioView(itinerario).getRoot());
     }
 
-    public static void displayAggiungiItinerarioView() {
-        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiItinerarioView().getRoot());
+    public static AggiungiItinerarioView displayAggiungiItinerarioView() {
+        AggiungiItinerarioView aggiungiItinerarioView = ViewFactory.createAggiungiItinerarioView();
+        ((StackPane)activeView.getRoot()).getChildren().add(aggiungiItinerarioView.getRoot());
+        return aggiungiItinerarioView;
     }
 
     public static void displayAlbergoInfoView(Albergo albergo) {
         ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAlbergoInfoView(albergo).getRoot());
     }
 
-    public static void displayAggiungiAlbergoView() {
-        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiAlbergoView().getRoot());
+    public static AggiungiAlbergoView displayAggiungiAlbergoView() {
+        AggiungiAlbergoView aggiungiAlbergoView = ViewFactory.createAggiungiAlbergoView();
+        ((StackPane)activeView.getRoot()).getChildren().add(aggiungiAlbergoView.getRoot());
+        return aggiungiAlbergoView;
     }
 
-    public static void displayAggiungiAutobusView() {
-        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiAutobusView().getRoot());
+    public static AggiungiAutobusView displayAggiungiAutobusView() {
+        AggiungiAutobusView aggiungiAutobusView = ViewFactory.createAggiungiAutobusView();
+        ((StackPane)activeView.getRoot()).getChildren().add(aggiungiAutobusView.getRoot());
+        return aggiungiAutobusView;
     }
 
-    public static void displayAggiungiViaggioView() {
-        ((StackPane)activeView.getRoot()).getChildren().add(ViewFactory.createAggiungiViaggioView().getRoot());
+    public static AggiungiViaggioView displayAggiungiViaggioView() {
+        AggiungiViaggioView aggiungiViaggioView = ViewFactory.createAggiungiViaggioView();
+        ((StackPane)activeView.getRoot()).getChildren().add(aggiungiViaggioView.getRoot());
+        return aggiungiViaggioView;
     }
 
     public static void displayInfoViaggioView(Viaggio viaggio) {

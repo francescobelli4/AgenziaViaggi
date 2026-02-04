@@ -5,10 +5,14 @@ import dtos.AlbergoDTO;
 import exception.DAOException;
 import exception.InvalidHotelDataException;
 import javafx.scene.layout.StackPane;
+import models.Albergo;
 import views.*;
+
+import java.util.function.Consumer;
 
 public class AggiungiAlbergoViewController extends GraphicsController<AggiungiAlbergoView> {
 
+    private Consumer<Albergo> onSuccess;
 
     public AggiungiAlbergoViewController(AggiungiAlbergoView view) {
         super(view);
@@ -21,8 +25,12 @@ public class AggiungiAlbergoViewController extends GraphicsController<AggiungiAl
         getView().getAggiungiButton().setOnMouseClicked(_ -> aggiungiButtonClicked());
     }
 
+    public void setOnSuccess(Consumer<Albergo> onSuccess) {
+        this.onSuccess = onSuccess;
+    }
+
     private void rootClicked() {
-        ((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        ViewNavigator.closeCurrentFloatingPage();
     }
 
 
@@ -46,7 +54,7 @@ public class AggiungiAlbergoViewController extends GraphicsController<AggiungiAl
         }
 
         try {
-            HotelController.aggiungiAlbergo(new AlbergoDTO(
+            Albergo albergo = HotelController.aggiungiAlbergo(new AlbergoDTO(
                     getView().getNomeTF().getText(),
                     getView().getCittaTF().getText(),
                     getView().getIndirizzoTF().getText(),
@@ -60,9 +68,8 @@ public class AggiungiAlbergoViewController extends GraphicsController<AggiungiAl
                     getView().getCognomeTF().getText()
             ));
 
-            ListaAlberghiView listaAlberghi = (ListaAlberghiView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaAlberghiViewController)listaAlberghi.getGraphicsController()).updateLists();
-            rootClicked();
+            if (onSuccess != null) onSuccess.accept(albergo);
+            ViewNavigator.closeCurrentFloatingPage();
         } catch (InvalidHotelDataException | DAOException e) {
             ViewNavigator.displayNotification("Errore", e.getMessage(), Icon.APPICON);
         }

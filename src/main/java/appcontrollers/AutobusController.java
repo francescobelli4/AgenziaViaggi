@@ -26,7 +26,7 @@ public class AutobusController {
         return autobus;
     }
 
-    public static void aggiungiAutobus(String targa, int capienza, int costo) throws DAOException, InvalidAutobusDataException {
+    public static Autobus aggiungiAutobus(String targa, int capienza, int costo) throws DAOException, InvalidAutobusDataException {
 
         if (targa.isBlank()) {
             throw new InvalidAutobusDataException("Targa non valida");
@@ -41,7 +41,7 @@ public class AutobusController {
         }
 
         try {
-            new AggiungiAutobusProcedureDAO().execute(new AutobusDTO(targa, capienza, costo));
+            return new AggiungiAutobusProcedureDAO().execute(new AutobusDTO(targa, capienza, costo));
         } catch (SQLException e) {
             throw new DAOException(e);
         }

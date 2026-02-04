@@ -1,10 +1,3 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Versione server:              8.0.44 - MySQL Community Server - GPL
--- S.O. server:                  Win64
--- HeidiSQL Versione:            12.14.0.7165
--- --------------------------------------------------------
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
@@ -88,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
                                          KEY `cliente_nominativo` (`Cognome`,`Nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella agenzia_viaggi.cliente: ~0 rows (circa)
+-- Dump dei dati della tabella agenzia_viaggi.cliente: ~11 rows (circa)
 INSERT INTO `cliente` (`CF`, `Nome`, `Cognome`) VALUES
                                                     ('BRNGRD90A01H501Q', 'Riccardo', 'Bruno'),
                                                     ('CRSRSO86I09L219Y', 'Rosa', 'Caruso'),
@@ -566,6 +559,7 @@ BEGIN
     SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
     START TRANSACTION;
     INSERT INTO tappa(Nome, Tipo) VALUES (var_nome_tappa, var_tipo_tappa);
+    SELECT * FROM tappa WHERE Nome = var_nome_tappa AND Tipo = var_tipo_tappa;
     COMMIT;
 END//
 DELIMITER ;
@@ -602,6 +596,8 @@ BEGIN
     INSERT INTO referente(CF, Nome, Cognome) VALUES (var_cf_referente, var_nome_referente, var_cognome_referente);
     INSERT INTO albergo(Nome, Indirizzo, Città, Costo, Capienza, Referente, Email, Telefono, Fax) VALUES (var_nome_albergo, var_indirizzo_albergo, var_citta_albergo, var_costo_albergo, var_capienza_albergo, var_cf_referente, var_email_albergo, var_telefono_albergo, var_fax_albergo);
 
+    SELECT a.Nome as NomeAlbergo, Indirizzo, Città, Costo, Capienza, Email, Telefono, Fax, CF as CFReferente, r.Nome as NomeReferente, Cognome as CognomeReferente FROM albergo a JOIN referente r ON a.Referente = r.CF WHERE a.Nome = var_nome_albergo AND a.Indirizzo = var_indirizzo_albergo AND a.Città = var_citta_albergo;
+
     COMMIT;
 end//
 DELIMITER ;
@@ -623,6 +619,7 @@ BEGIN
     START TRANSACTION READ WRITE;
 
     INSERT INTO autobus(Targa, Capienza, Costo) VALUES (var_targa_autobus, var_capienza_autobus, var_costo_autobus);
+    SELECT * FROM autobus WHERE Targa = var_targa_autobus;
 
     COMMIT;
 end//
@@ -680,6 +677,8 @@ BEGIN
             SET i = i + 1;
         end while;
 
+    SELECT * FROM itinerario WHERE Nome = var_nome_itinerario;
+
     COMMIT;
 END//
 DELIMITER ;
@@ -691,6 +690,8 @@ CREATE PROCEDURE `NuovoViaggio`(IN var_nome_itinerario varchar(64), IN var_data_
                                 IN var_data_ritorno date)
 BEGIN
 
+    DECLARE var_codice_viaggio VARCHAR(64);
+
     DECLARE exit handler for sqlexception
         BEGIN
             ROLLBACK;
@@ -699,7 +700,11 @@ BEGIN
 
     SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
     START TRANSACTION READ WRITE;
-    INSERT INTO viaggio(Codice, Itinerario, Partenza, Ritorno) VALUES (UUID(), var_nome_itinerario, var_data_partenza, var_data_ritorno);
+
+    SET var_codice_viaggio = UUID();
+
+    INSERT INTO viaggio(Codice, Itinerario, Partenza, Ritorno) VALUES (var_codice_viaggio, var_nome_itinerario, var_data_partenza, var_data_ritorno);
+    SELECT * FROM viaggio WHERE Codice = var_codice_viaggio;
     COMMIT;
 end//
 DELIMITER ;
@@ -717,7 +722,7 @@ CREATE TABLE IF NOT EXISTS `partecipa` (
                                            CONSTRAINT `partecipa_ibfk_2` FOREIGN KEY (`Cliente`) REFERENCES `cliente` (`CF`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella agenzia_viaggi.partecipa: ~0 rows (circa)
+-- Dump dei dati della tabella agenzia_viaggi.partecipa: ~11 rows (circa)
 INSERT INTO `partecipa` (`CodiceDisdetta`, `Prenotazione`, `Cliente`) VALUES
                                                                           ('d8472bf3-fe19-11f0-b010-0250a3bfb7b6', 'd846a0e3-fe19-11f0-b010-0250a3bfb7b6', 'BRNGRD90A01H501Q'),
                                                                           ('d8473f55-fe19-11f0-b010-0250a3bfb7b6', 'd846a0e3-fe19-11f0-b010-0250a3bfb7b6', 'VLLVAL92B02F205R'),
@@ -762,7 +767,7 @@ CREATE TABLE IF NOT EXISTS `pernottamento` (
                                                CONSTRAINT `pernottamento_ibfk_2` FOREIGN KEY (`NomeAlbergo`, `CittàAlbergo`, `IndirizzoAlbergo`) REFERENCES `albergo` (`Nome`, `Città`, `Indirizzo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella agenzia_viaggi.pernottamento: ~0 rows (circa)
+-- Dump dei dati della tabella agenzia_viaggi.pernottamento: ~7 rows (circa)
 INSERT INTO `pernottamento` (`Viaggio`, `Ordine`, `NomeAlbergo`, `IndirizzoAlbergo`, `CittàAlbergo`) VALUES
                                                                                                          ('a46e66dd-fe19-11f0-b010-0250a3bfb7b6', 0, 'B&B Colosseum', 'Via dei Fori 10', 'Roma'),
                                                                                                          ('a46e66dd-fe19-11f0-b010-0250a3bfb7b6', 2, 'Pensione Dante', 'Via Ghibellina 12', 'Firenze'),
@@ -782,7 +787,7 @@ CREATE TABLE IF NOT EXISTS `prenotazione` (
                                               CONSTRAINT `prenotazione_ibfk_1` FOREIGN KEY (`Viaggio`) REFERENCES `viaggio` (`Codice`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella agenzia_viaggi.prenotazione: ~0 rows (circa)
+-- Dump dei dati della tabella agenzia_viaggi.prenotazione: ~6 rows (circa)
 INSERT INTO `prenotazione` (`Codice`, `Viaggio`) VALUES
                                                      ('d846a0e3-fe19-11f0-b010-0250a3bfb7b6', 'a46e66dd-fe19-11f0-b010-0250a3bfb7b6'),
                                                      ('d849a2fb-fe19-11f0-b010-0250a3bfb7b6', 'a47074c0-fe19-11f0-b010-0250a3bfb7b6'),
@@ -800,11 +805,12 @@ CREATE TABLE IF NOT EXISTS `referente` (
                                            PRIMARY KEY (`CF`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella agenzia_viaggi.referente: ~10 rows (circa)
+-- Dump dei dati della tabella agenzia_viaggi.referente: ~11 rows (circa)
 INSERT INTO `referente` (`CF`, `Nome`, `Cognome`) VALUES
                                                       ('BCKGNN78D04H501F', 'Gianni', 'Bianchi'),
                                                       ('BNCGNN85B02F205Z', 'Giovanni', 'Bianchi'),
                                                       ('COLMRA72E05F205G', 'Marco', 'Colombo'),
+                                                      ('dsdasd', 'asdasda', 'dsadadasd'),
                                                       ('ESPLGI92C03L219E', 'Luigi', 'Esposito'),
                                                       ('FERSRA88B02F205D', 'Sara', 'Ferrari'),
                                                       ('GLLFNC75D04H501Q', 'Francesco', 'Gialli'),
@@ -946,7 +952,7 @@ CREATE TABLE IF NOT EXISTS `tappa` (
                                        PRIMARY KEY (`Nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella agenzia_viaggi.tappa: ~20 rows (circa)
+-- Dump dei dati della tabella agenzia_viaggi.tappa: ~21 rows (circa)
 INSERT INTO `tappa` (`Nome`, `Tipo`) VALUES
                                          ('Arena di Verona', 'Luogo'),
                                          ('Bari', 'Città'),
@@ -964,7 +970,6 @@ INSERT INTO `tappa` (`Nome`, `Tipo`) VALUES
                                          ('Roma', 'Città'),
                                          ('Siena', 'Città'),
                                          ('Tor Vergata', 'Città'),
-                                         ('Tor Vergata Ingegneria', 'Luogo'),
                                          ('Torino', 'Città'),
                                          ('Uffizi', 'Luogo'),
                                          ('Valle dei Templi', 'Luogo'),
@@ -982,7 +987,7 @@ CREATE TABLE IF NOT EXISTS `usa` (
                                      CONSTRAINT `usa_ibfk_2` FOREIGN KEY (`Autobus`) REFERENCES `autobus` (`Targa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella agenzia_viaggi.usa: ~0 rows (circa)
+-- Dump dei dati della tabella agenzia_viaggi.usa: ~2 rows (circa)
 INSERT INTO `usa` (`Viaggio`, `Autobus`) VALUES
                                              ('a46e66dd-fe19-11f0-b010-0250a3bfb7b6', 'AA123BB'),
                                              ('a47074c0-fe19-11f0-b010-0250a3bfb7b6', 'DD456EE');
@@ -1013,8 +1018,10 @@ CREATE TABLE IF NOT EXISTS `viaggio` (
                                          CONSTRAINT `viaggio_ibfk_1` FOREIGN KEY (`Itinerario`) REFERENCES `itinerario` (`Nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dump dei dati della tabella agenzia_viaggi.viaggio: ~0 rows (circa)
+-- Dump dei dati della tabella agenzia_viaggi.viaggio: ~6 rows (circa)
 INSERT INTO `viaggio` (`Codice`, `Itinerario`, `Partenza`, `Ritorno`) VALUES
+                                                                          ('36214947-01d0-11f1-b010-0250a3bfb7b6', 'Gran Tour d Italia', '2026-02-27', '2026-03-04'),
+                                                                          ('4a4b298f-01d0-11f1-b010-0250a3bfb7b6', 'Tour Arte e Storia', '2026-08-01', '2026-08-06'),
                                                                           ('a46e66dd-fe19-11f0-b010-0250a3bfb7b6', 'Tour Arte e Storia', '2026-01-10', '2026-01-12'),
                                                                           ('a47074c0-fe19-11f0-b010-0250a3bfb7b6', 'Rotta del Sole', '2026-01-20', '2026-01-22'),
                                                                           ('a4726157-fe19-11f0-b010-0250a3bfb7b6', 'Capitali del Nord e Sud', '2026-02-18', '2026-02-20'),

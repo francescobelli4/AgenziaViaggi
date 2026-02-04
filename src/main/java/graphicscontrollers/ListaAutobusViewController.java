@@ -4,10 +4,7 @@ import appcontrollers.AutobusController;
 import exception.DAOException;
 import javafx.scene.Node;
 import models.Autobus;
-import views.Icon;
-import views.ListaAutobusView;
-import views.ViewFactory;
-import views.ViewNavigator;
+import views.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +23,30 @@ public class ListaAutobusViewController extends GraphicsController<ListaAutobusV
 
         getView().getAddButton().setOnMouseClicked(_ -> addButtonClicked());
 
+        autobuses = AutobusController.getAutobus();
+        updateLists();
+    }
+
+    private void aggiungiAutobus(Autobus autobus) {
+        this.autobuses.add(autobus);
+        updateLists();
+    }
+
+    private void rimuoviAutobus(Autobus autobus) {
+        this.autobuses.remove(autobus);
         updateLists();
     }
 
     public void updateLists() {
 
         try {
-            autobuses = AutobusController.getAutobus();
 
             List<Node> autobusNodes = new ArrayList<>();
             for (Autobus i : autobuses) {
-                autobusNodes.add(ViewFactory.createListaAutobusElementView(i).getRoot());
+                ListaAutobusElementView listaAutobusElementView = ViewFactory.createListaAutobusElementView(i);
+                ListaAutobusElementViewController listaAutobusElementViewController = (ListaAutobusElementViewController) listaAutobusElementView.getGraphicsController();
+                listaAutobusElementViewController.setOnDeleted(this::rimuoviAutobus);
+                autobusNodes.add(listaAutobusElementView.getRoot());
             }
 
             getView().update(autobusNodes);
@@ -46,6 +56,8 @@ public class ListaAutobusViewController extends GraphicsController<ListaAutobusV
     }
 
     private void addButtonClicked() {
-        ViewNavigator.displayAggiungiAutobusView();
+        AggiungiAutobusView aggiungiAutobusView = ViewNavigator.displayAggiungiAutobusView();
+        AggiungiAutobusViewController aggiungiAutobusViewController = (AggiungiAutobusViewController) aggiungiAutobusView.getGraphicsController();
+        aggiungiAutobusViewController.setOnSuccess(this::aggiungiAutobus);
     }
 }

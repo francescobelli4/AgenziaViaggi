@@ -44,7 +44,7 @@ public class ItinerariesController {
         }
     }
 
-    public static void aggiungiItinerario(String nome, int costo, List<Tappa> tappe) throws DAOException, InvalidItineraryNameException, InvalidItineraryCostException {
+    public static Itinerario aggiungiItinerario(String nome, int costo, List<Tappa> tappe) throws DAOException, InvalidItineraryNameException, InvalidItineraryCostException {
 
         if (nome.isBlank()) {
             throw new InvalidItineraryNameException();
@@ -55,7 +55,7 @@ public class ItinerariesController {
         }
 
         try {
-            new AggiungiItinerarioProcedureDAO().execute(new ItinerarioDTO(nome, costo, new Gson().toJson(tappe)));
+            return new AggiungiItinerarioProcedureDAO().execute(new ItinerarioDTO(nome, costo, new Gson().toJson(tappe)));
         } catch (SQLException e) {
             throw new DAOException(e);
         }

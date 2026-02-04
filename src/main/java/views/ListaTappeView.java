@@ -43,16 +43,20 @@ public class ListaTappeView implements View {
         //Nothing to do...
     }
 
+    private void addStop(Node tappa, Tappa.Tipo tipo) {
+        if (tipo == Tappa.Tipo.CITTA) {
+            citiesList.getChildren().add(tappa);
+        } else {
+            placesList.getChildren().add(tappa);
+        }
+    }
+
     public void update(Map<Node, Tappa.Tipo> stops) {
         placesList.getChildren().clear();
         citiesList.getChildren().clear();
 
         for (var entry : stops.entrySet()) {
-            if (entry.getValue() == Tappa.Tipo.CITTA) {
-                citiesList.getChildren().add(entry.getKey());
-            } else {
-                placesList.getChildren().add(entry.getKey());
-            }
+            addStop(entry.getKey(), entry.getValue());
         }
     }
 

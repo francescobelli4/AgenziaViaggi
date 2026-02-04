@@ -5,8 +5,11 @@ import exception.DAOException;
 import models.Albergo;
 import views.*;
 
+import java.util.function.Consumer;
+
 public class ListaAlberghiElementViewController extends GraphicsController<ListaAlberghiElementView> {
 
+    private Consumer<Albergo> onDeleted;
     private final Albergo albergo;
 
     public ListaAlberghiElementViewController(ListaAlberghiElementView view, Albergo albergo) {
@@ -24,6 +27,10 @@ public class ListaAlberghiElementViewController extends GraphicsController<Lista
         getView().getRoot().setOnMouseClicked(_ -> elementClicked());
     }
 
+    public void setOnDeleted(Consumer<Albergo> onDeleted) {
+        this.onDeleted = onDeleted;
+    }
+
     private void elementClicked() {
         ViewNavigator.displayAlbergoInfoView(albergo);
     }
@@ -31,9 +38,7 @@ public class ListaAlberghiElementViewController extends GraphicsController<Lista
     private void deleteButtonClicked() {
         try {
             HotelController.eliminaAlbergo(albergo);
-
-            ListaAlberghiView listaAlberghi = (ListaAlberghiView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaAlberghiViewController)listaAlberghi.getGraphicsController()).updateLists();
+            if (onDeleted != null) onDeleted.accept(albergo);
         } catch (DAOException e) {
             ViewNavigator.displayNotification("Errore", e.getMessage(), Icon.APPICON);
         }

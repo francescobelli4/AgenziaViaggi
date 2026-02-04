@@ -26,14 +26,14 @@ public class StopsController {
         return tappe;
     }
 
-    public static void aggiungiTappa(String nome, Tappa.Tipo tipo) throws DAOException, InvalidStopNameException {
+    public static Tappa aggiungiTappa(String nome, Tappa.Tipo tipo) throws DAOException, InvalidStopNameException {
 
         if (nome.isBlank()) {
             throw new InvalidStopNameException();
         }
 
         try {
-            new AggiungiTappaProcedureDAO().execute(new TappaDTO(nome, tipo.getTipo()));
+            return new AggiungiTappaProcedureDAO().execute(new TappaDTO(nome, tipo.getTipo()));
         } catch (SQLException e) {
             throw new DAOException(e);
         }

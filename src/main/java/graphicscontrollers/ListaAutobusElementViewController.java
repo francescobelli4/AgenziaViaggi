@@ -5,8 +5,11 @@ import exception.DAOException;
 import models.Autobus;
 import views.*;
 
+import java.util.function.Consumer;
+
 public class ListaAutobusElementViewController extends GraphicsController<ListaAutobusElementView> {
 
+    Consumer<Autobus> onDeleted;
     private final Autobus autobus;
 
     public ListaAutobusElementViewController(ListaAutobusElementView view, Autobus autobus) {
@@ -24,12 +27,14 @@ public class ListaAutobusElementViewController extends GraphicsController<ListaA
         getView().getDeleteButton().setOnMouseClicked(_ -> deleteButtonClicked());
     }
 
+    public void setOnDeleted(Consumer<Autobus> onDeleted) {
+        this.onDeleted = onDeleted;
+    }
+
     private void deleteButtonClicked() {
         try {
             AutobusController.eliminaAutobus(autobus);
-
-            ListaAutobusView listaAutobus = (ListaAutobusView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaAutobusViewController)listaAutobus.getGraphicsController()).updateLists();
+            if (onDeleted != null) onDeleted.accept(autobus);
         } catch (DAOException e) {
             ViewNavigator.displayNotification("Errore", e.getMessage(), Icon.APPICON);
         }

@@ -7,8 +7,11 @@ import javafx.scene.layout.StackPane;
 import models.Tappa;
 import views.*;
 
+import java.util.function.Consumer;
+
 public class AggiungiTappaViewController extends GraphicsController<AggiungiTappaView> {
 
+    private Consumer<Tappa> onSuccess;
     private Tappa.Tipo tipo = Tappa.Tipo.CITTA;
 
     public AggiungiTappaViewController(AggiungiTappaView view) {
@@ -26,8 +29,12 @@ public class AggiungiTappaViewController extends GraphicsController<AggiungiTapp
         getView().getAggiungiButton().setOnMouseClicked(_ -> aggiungiButtonClicked());
     }
 
+    public void setOnSuccess(Consumer<Tappa> onSuccess) {
+        this.onSuccess = onSuccess;
+    }
+
     private void rootClicked() {
-        ((StackPane)ViewNavigator.getActiveView().getRoot()).getChildren().remove(getView().getRoot());
+        ViewNavigator.closeCurrentFloatingPage();
     }
 
     private void cityButtonClicked() {
@@ -45,10 +52,10 @@ public class AggiungiTappaViewController extends GraphicsController<AggiungiTapp
     private void aggiungiButtonClicked() {
 
         try {
-            StopsController.aggiungiTappa(getView().getNomeTextField().getText(), tipo);
-            ListaTappeView listaTappe = (ListaTappeView) ((HomeView)ViewNavigator.getActiveView()).getActiveView();
-            ((ListaTappeViewController)listaTappe.getGraphicsController()).updateLists();
-            rootClicked();
+            Tappa t = StopsController.aggiungiTappa(getView().getNomeTextField().getText(), tipo);
+
+            if (onSuccess != null) onSuccess.accept(t);
+            ViewNavigator.closeCurrentFloatingPage();
         } catch (InvalidStopNameException _) {
             ViewNavigator.displayNotification("Errore", "Nome non valido.", Icon.APPICON);
         } catch (DAOException e) {
